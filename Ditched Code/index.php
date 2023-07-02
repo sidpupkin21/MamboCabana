@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -8,31 +8,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
 
   <!--Title-->
-  <title>Mambo Cabana</title>
+  <title>Mambo Cabana | Home</title>
+  <?php require('shared/links.php')?>
 
-  <!--Bootstrap-->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-  <!--Font Awesome-->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <!--Iconify-->
-  <!--Swiper.js-->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
-  <!--Google Font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;1000&family=Pacifico&display=swap" rel="stylesheet">
-  <!--CSS Styling-->
-  <link rel="stylesheet" href="css/stylesheet.css" />
 </head>
 
 <body class="bg-light shadow-xl">
  <?php
- require('shared/header.php');
+ include('shared/header.php');
  ?>
   <!--Home Page Gallery Swiper
-TODO: change images+ organize folders-->
+TODO: change images+ organize folders
+Add whatsapp logo to all pages-->
   <div class="container-fluid "> <!--px-lg-4 mt-4-->
     <div class="swiper mySwiper">
       <div class="swiper-wrapper">
@@ -109,7 +96,6 @@ TODO: change images+ organize folders-->
             <div class="col-lg-2">
               <button type="submit" class="btn text-white shadow-none custom-bg btn-sm">
                 <iconify-icon icon="basil:search-solid" height="25" width="25"></iconify-icon>
-
               </button>
             </div>
           </div>
@@ -121,6 +107,7 @@ TODO: change images+ organize folders-->
 
   <!--Room Card Title-->
   <h2 class="mt-5 pt-4 mb-4 text-center fw-bold h-font">TOP RATED ROOMS</h2>
+  <div class="h-line bg-dark"></div>
 
   <!--Room Cards-->
   <div class="container">
@@ -268,12 +255,13 @@ TODO: change images+ organize folders-->
 
   <!--View Rooms Button-->
   <div class="col-lg-12 text-center mt-5">
-    <a href="#" class="btn btn-sm btn-outline-dark rounded-0 fw-bold shadow-none">View ALL</a>
+    <a href="rooms.php" class="btn btn-sm btn-outline-dark rounded-0 fw-bold shadow-none">View ALL</a>
   </div>
   <br/><br/>
 
   <!--Reach us-->
-  <h1 class="mt-5 pt-4 mb-4 text-center fw-bold h-font">FIND US</h1>
+  <h1 class="mt-5 pt-4 mb-4 text-center fw-bold h-font">FIND US      <div class="h-line bg-dark"></div></h1>
+
 
   <div class="container">
     <div class="row">
@@ -287,26 +275,9 @@ TODO: change images+ organize folders-->
 
   <?php 
   require('shared/footer.php');
+  require('shared/links.php')
   ?>
-  <!--Scripts-->
-  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-  <script src="https://kit.fontawesome.com/c8c1f4e6df.js" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-  <!-- Initialize Swiper -->
-  <script src="script.js"></script>
-  <script>
-    var swiper = new Swiper(".mySwiper", {
-      spaceBetween: 30,
-      centeredSlides: true,
-      effect: "fade",
-      loop: true,
-      autoplay: {
-        delay: 4000,
-        disableOnInteraction: false,
-      },
-    });
-  </script>
+  
 </body>
 
 </html>

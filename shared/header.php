@@ -3,7 +3,7 @@ TODO: NAV LINKS & Background
 navbar bg-body-tertiary fixed-top-->
 <nav class="navbar bg-body-tertiary fixed-top bg-light px-lg-3 py-lg-2 shadow-none sticky-top rounded">
     <div class="container-fluid">
-      <a class="navbar-brand" href="index">LOGO GOES HERE</a>
+      <a class="navbar-brand"><img src="images/logo/main.jpeg" width="250"  height="100"/></a>
       <div class="d-flex">
         <button class="btn btn-outline-success shadow me-4 btn-md">Reserve</button>
         <button class="btn btn-outline-dark shadow-none me-0 btn-md" data-bs-toggle="modal" data-bs-target="#loginModal">
@@ -24,34 +24,32 @@ navbar bg-body-tertiary fixed-top-->
         <div class="offcanvas-body">
           <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
+              <a class="nav-link" aria-current="page" href="index.php">Home</a>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="true">
                 Rooms & Suites
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">King Room</a></li>
-                <li><a class="dropdown-item" href="#">Deluxe Double Room + Balcony</a></li>
-                <li><a class="dropdown-item" href="#">Deluxe Double Room</a></li>
-                <li><a class="dropdown-item" href="#">Family Double Room</a></li>
-                <li><a class="dropdown-item" href="#">Budget Double Room</a></li>
+                <li><a class="dropdown-item" href="king.php">King Room</a></li>
+                <li><a class="dropdown-item" href="deluxeDoubleBalcony.php">Deluxe Double Room + Balcony</a></li>
+                <li><a class="dropdown-item" href="deluxeDouble.php">Deluxe Double Room</a></li>
+                <li><a class="dropdown-item" href="familyDouble.php">Family Double Room</a></li>
+                <li><a class="dropdown-item" href="budgetDouble.php">Budget Double Room</a></li>
+                <li><a class="dropdown-item" href="rooms.php">View All</a></li>
             </li>
           </ul>
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="#">Activites</a>
+            <a class="nav-link" aria-current="page" href="facilities.php">Facilities</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="#">Facilities</a>
+            <a class="nav-link" aria-current="page" href="activityLocationTips.php">Activities & Location & Tips</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="#">Location & Tips</a>
+            <a class="nav-link" aria-current="page" href="clientReviews.php">Client Reviews</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="#">Client Reviews</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="#">Contact</a>
+            <a class="nav-link" aria-current="page" href="contact.php">Contact</a>
           </li>
         </div>
       </div>
@@ -156,3 +154,5 @@ TODO: still needs work-->
       </div>
     </div>
   </div>
+  <!-- </body>
+</html> -->

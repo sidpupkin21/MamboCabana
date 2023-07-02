@@ -1,10 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<?php 
-require('shared/links.php'); ?>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+
+    <!--Title-->
+    <title>Activites | Location | Tips</title>
+    <?php require('shared/links.php') ?>
 </head>
+
 <body>
+    <?php
+    include('shared/header.php');
+    ?>
+</body>
 <!--Footer-->
 <footer class="footer-area section-padding-80-0">
     <div class="main-footer-area">
@@ -15,31 +27,29 @@ require('shared/links.php'); ?>
                 <div class="col-12 col-sm-6 col-lg-0">
                     <div class="single-footer-widget mb-80">
                         <!--Footer logo goes here-->
-                        <a class="footer-logo" >
-                            <img src="images/logo/01.png" class="blend-image" width="500" height="500" />
+                        <a href="#" class="footer-logo">
+
+                            <img str="." />
+                            Footer Logo Goes here
                         </a>
-                        <!-- <h6>Tel: +255-776-886-630</h6>
-                        <h6>Tel: +971-52-218-1823</h6>
+                        <h6>+255-776-886-630</h6>
+                        <h6>+971-52-218-1823</h6>
                         <span>admin@email.com</span>
-                        <span>Address goes here</span> -->
+                        <span>Address goes here</span>
                     </div>
                 </div>
 
                 <!--Widget Area with page links-->
                 <div class="col-5 col-sm-4 col-lg-3">
                     <div class="single-footer-widget mb-80">
-                        <!-- <h5 class="widget-title">Links</h5>
+                        <h5 class="widget-title">Links</h5>
                         <ul class="footer-nav">
                             <li style="list-style-type: none;"><a href="rooms.php"><iconify-icon icon="bi:caret-right"></iconify-icon>Rooms & Suites</a></li>
                             <li style="list-style-type: none;"><a href="facilities.php"><iconify-icon icon="bi:caret-right"></iconify-icon>Facilities</a></li>
                             <li style="list-style-type: none;"><a href="activityLocationTips.php"><iconify-icon icon="bi:caret-right"></iconify-icon>Activities & Location & Tips</a></li>
                             <li style="list-style-type: none;"><a href="clientReviews.php"><iconify-icon icon="bi:caret-right"></iconify-icon>Client Reviews</a></li>
                             <li style="list-style-type: none;"><a href="contact.php"><iconify-icon icon="bi:caret-right"></iconify-icon>Contact</a></li>
-                        </ul> -->
-                        <h6 style="font-size:175%">Tel: +255-776-886-630</h6>
-                        <h6 style="font-size:175%">Tel: +971-52-218-1823</h6>
-                        <span>admin@email.com</span>
-                        <span>Address goes here</span>
+                        </ul>
                     </div>
                 </div>
 
@@ -58,7 +68,6 @@ require('shared/links.php'); ?>
                                     <a href="#"><iconify-icon icon="mdi:instagram"></iconify-icon></a>
                                     <a href="#"><iconify-icon icon="mdi:twitter"></iconify-icon></a>
                                 </div>
-                                
                             </div>
                         </div>
                     </div>
@@ -69,5 +78,4 @@ require('shared/links.php'); ?>
         </div>
     </div>
 </footer>
-</body>
 </html>
