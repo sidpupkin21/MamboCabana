@@ -28,7 +28,7 @@ session_regenerate_id(true);
     <?php require("../admin/db/header.php"); ?>
     <div class="container-fluid" id="mainContent">
         <div class="row">
-            <div class="col-lg-10 ms-auto p-4 md-0 overflow-hidden">
+            <div class="col-lg-10 ms-auto p-4 md-4 overflow-hidden">
                 <div class="d-flex align-items-center justify-content-between mb-4">
                     <h3>DASHBOARD</h3>
                     <!--PHP CODE-->
