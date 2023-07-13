@@ -11,11 +11,7 @@ adminLogin();
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Settings</title>
-  <!--Bootstrap Link-->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-
-  <!--CSS Styling-->
-  <link rel="stylesheet" href="../admin/css/styles.css" />
+  <?php require('../admin/db/links.php'); ?>
 </head>
 
 <body class="bg-white">
@@ -136,6 +132,14 @@ adminLogin();
                     <i class="bi bi-twitter me-1"></i>
                     <span id="tw"></span>
                   </p>
+                  <p class="card-text">
+                    <i class="bi bi-whatsapp me-1"></i>
+                    <span id="ws"></span>
+                  </p>
+                  <p class="card-text">
+                    <i class="bi bi-bootstrap me-1"></i>
+                    <span id="bk"></span>
+                  </p>
                 </div>
                 <div class="mb-4">
                   <h6 class="card-subtitle mb-1 fw-bold">iFrame</h6>
@@ -198,6 +202,14 @@ adminLogin();
                           <div class="input-group mb-3">
                             <span class="input-group-text"><i class="bi bi-twitter"></i></span>
                             <input type="text" name="tw" id="tw_inp" class="form-control shadow-none" required>
+                          </div>
+                          <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="bi bi-whatsapp"></i></span>
+                            <input type="text" name="ws" id="ws_inp" class="form-control shadow-none" required>
+                          </div>
+                          <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="bi bi-bootstrap"></i></span>
+                            <input type="text" name="bk" id="bk_inp" class="form-control shadow-none" required>
                           </div>
                         </div>
                         <div class="mb-3">

@@ -12,15 +12,7 @@ session_regenerate_id(true);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <!--Bootstrap Link-->
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous"> -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-
-    <!--CSS Styling-->
-    <link rel="stylesheet" href="../admin/css/styles.css" />
-    <style>
-
-    </style>
+    <?php require('../admin/db/links.php'); ?>
 </head>
 
 
@@ -40,7 +32,7 @@ session_regenerate_id(true);
                             <div class="card text-center text-success p-3">
                                 <h6>New Bookings</h6>
                                 <h1 class="mt-2 mb-0"></h1>
-                                 <!--PHP CODE-->
+                                <!--PHP CODE-->
                             </div>
                         </a>
                     </div>
@@ -50,7 +42,7 @@ session_regenerate_id(true);
                             <div class="card text-center text-success p-3">
                                 <h6>Refund Bookings </h6>
                                 <h1 class="mt-2 mb-0"></h1>
-                                 <!--PHP CODE-->
+                                <!--PHP CODE-->
                             </div>
                         </a>
                     </div>
@@ -60,7 +52,7 @@ session_regenerate_id(true);
                             <div class="card text-center text-success p-3">
                                 <h6>User Query</h6>
                                 <h1 class="mt-2 mb-0"></h1>
-                                 <!--PHP CODE-->
+                                <!--PHP CODE-->
                             </div>
                         </a>
                     </div>
@@ -70,7 +62,7 @@ session_regenerate_id(true);
                             <div class="card text-center text-success p-3">
                                 <h6>Reviews & Ratings</h6>
                                 <h1 class="mt-2 mb-0"></h1>
-                                 <!--PHP CODE-->
+                                <!--PHP CODE-->
                             </div>
                         </a>
                     </div>
