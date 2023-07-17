@@ -1,4 +1,3 @@
-<!--DB Config-->
 <?php
 $host = 'localhost';
 $userN = 'root';

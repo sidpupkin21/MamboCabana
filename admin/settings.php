@@ -1,7 +1,8 @@
 <?php
 require("../admin/db/funcs.php");
+// require("../admin/db/db_config.php");
 adminLogin();
-// session_regenerate_id(true);
+ //session_regenerate_id(true);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,7 +23,7 @@ adminLogin();
         <h3 class="mb-4">SETTINGS</h3>
 
         <!--General Settings-->
-        <div class="card  border-0 shadow-sm mb-4">
+        <div class="card border-0 shadow-sm mb-4">
           <div class="card-body">
             <div class="d-flex align-items-center justify-content-between mb-3">
               <h5 class="card-title m-0">General Settings</h5>
@@ -31,11 +32,12 @@ adminLogin();
               </button>
             </div>
             <h6 class="card-subtitle mb-1 fw-bold">Site Logo</h6>
-            <p class="card-text" id="site_logo"></p> <!--site_title-->
+            <p class="card-text" id="site_logo"></p>
             <h6 class="card-subtitle mb-1 fw-bold">Contact Info</h6>
-            <p class="card-text" id="site_info"></p> <!--site_about-->
+            <p class="card-text" id="site_about"></p>
           </div>
         </div>
+
 
         <!--GS Modal-->
         <div class="modal fade" id="general-s" data-bs-backdrop="static" data-bs-keyboard="true" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -48,7 +50,7 @@ adminLogin();
                 <div class="modal-body">
                   <div class="mb-3">
                     <label class="form-label fw-bold">Site Logo</label>
-                    <input type="file" name="site_title" id="site_title_inp" class="form-control shadow-none" accept="image/*" required>
+                    <input type="text" name="site_logo" id="site_logo_inp" class="form-control shadow-none" rows="1" required>
                   </div>
                   <div class="mb-3">
                     <label class="form-label fw-bold">Contact Info</label>
@@ -56,7 +58,8 @@ adminLogin();
                   </div>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" onclick="site_title.value = general_data.site_title, site_about.value = general_data.site_about" class="btn text-secondary shadow-none" data-bs-dismiss="modal">CANCEL</button>
+                  <button type="button" onclick="site_logo.value = general_data.site_logo, site_about.value = general_data.site_about" class="btn text-secondary shadow-none" data-bs-dismiss="modal">CANCEL</button>
+                  <!-- <button type="button" class="btn text-secondary shadow-none" data-bs-dismiss="modal" data-bs-target="#general-s">SUBMIT</button> -->
                   <button type="submit" class="btn custom-bg text-white shadow-none">SUBMIT</button>
                 </div>
               </div>
@@ -64,12 +67,11 @@ adminLogin();
           </div>
         </div>
 
-
         <!--Shutdown Website-->
         <div class="card border-0 shadow-sm mb-4">
           <div class="card-body">
             <div class="d-flex align-items-center justify-content-between mb-3">
-              <h5 class="card-title m-0">Shutdown Website</h5>
+              <h5 class="card-title m-0">Shutdown Reservation</h5>
               <div class="form-check form-switch">
                 <form>
                   <input type="checkbox" onchange="upd_shutdown(this.value)" class="form-check-input" id="shutdown-toggle">
@@ -77,7 +79,7 @@ adminLogin();
               </div>
             </div>
             <p class="card-text">
-              By Shutting down the website, customer will not be allowed to book rooms, only admin control remains.
+              By shutting down reservation, customers will not be allowed to book rooms, only admin control remains.
             </p>
           </div>
         </div>
@@ -114,7 +116,8 @@ adminLogin();
                 </div>
                 <div class="mb-4">
                   <h6 class="card-subtitle mb-1 fw-bold">E-mail</h6>
-                  <p class="card-text" id="email"></p>
+                  <p class="card-text" id="email1"></p>
+                  <p class="card-text" id="email2"></p>
                 </div>
               </div>
               <div class="col-lg-6">
@@ -184,8 +187,11 @@ adminLogin();
                           </div>
                         </div>
                         <div class="mb-3">
-                          <label class="form-label fw-bold">Email</label>
-                          <input type="email" name="email" id="email_inp" class="form-control shadow-none" required>
+                          <label class="form-label fw-bold">Emails</label>
+                          <input type="email" name="email1" id="email1_inp" class="form-control shadow-none" required>
+                        </div>
+                        <div class="mb-3">
+                          <input type="email" name="email2" id="email2_inp" class="form-control shadow-none" required>
                         </div>
                       </div>
                       <div class="col-md-6">
@@ -221,7 +227,7 @@ adminLogin();
                   </div>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" onclick="contacts_inp(contacts_data)" class="btn text-secondary shadow-none" data-bs-dismiss="modal">CANCEL</button>
+                  <button type="button" onclick="contacts_inp(contacts_data)" class="btn text-secondary shadow-none" data-bs-dismiss="modal">CANCEL</button> <!--onclick="contacts_inp(contacts_data)"-->
                   <button type="submit" class="btn custom-bg text-white shadow-none">SUBMIT</button>
                 </div>
               </div>
@@ -234,8 +240,192 @@ adminLogin();
     </div>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
+  <?php
+  require("../admin/db/scripts.php") ?>
+
+  <!-- <script src="../admin/js/settings.js"></script> -->
+  <script>
+    let general_data;
+
+    let site_logo_inp = document.getElementById('site_logo_inp');
+    let site_about_inp = document.getElementById('site_about_inp');
+    let contacts_s_form = document.getElementById('contacts_s_form');
+
+    function get_general() {
+      let site_logo = document.getElementById('site_logo');
+      let site_about = document.getElementById('site_about');
+
+      let shutdown_toggler = document.getElementById('shutdown-toggle');
+
+
+      let xhr = new XMLHttpRequest();
+      xhr.open("POST", "logic/settings_crud.php", true);
+      xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+      xhr.onload = function() {
+        general_data = JSON.parse(this.responseText);
+        console.log(general_data);
+
+
+        site_logo.innerText = general_data.site_logo;
+        site_logo_inp.value = general_data.site_logo;
+
+        site_about.innerText = general_data.site_about;
+        site_about_inp.value = general_data.site_about;
+
+        if (general_data.shutdown == 0) {
+          shutdown_toggler.checked = false;
+          shutdown_toggler.value = 0;
+        } else {
+          shutdown_toggler.checked = true;
+          shutdown_toggler.value = 1;
+        }
+
+
+      }
+
+      xhr.send('get_general');
+    }
+
+    general_s_form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      upd_general(site_logo_inp.value, site_about_inp.value);
+    });
+
+    function upd_general(site_logo_val, site_about_val) {
+      let xhr = new XMLHttpRequest();
+      xhr.open("POST", "logic/settings_crud.php", true);
+      xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+
+      xhr.onload = function() {
+        // console.log(this.responseText);
+        var mymodal = document.getElementById('general-s');
+        var modal = bootstrap.Modal.getInstance(mymodal);
+        modal.hide();
+        if (this.responseText == 1) {
+          alert('success', 'General Settings have been updated');
+          get_general;
+
+        } else {
+          alert('error', 'No changes have been made');
+        }
+
+      }
+
+      xhr.send('site_logo=' + site_logo_val + "&site_about=" + site_about_val + '&upd_general');
+    }
+
+
+    function upd_shutdown(val) {
+      let xhr = new XMLHttpRequest();
+      xhr.open("POST", "logic/settings_crud.php", true);
+      xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+      // xhr.onload = function() {
+      //   // console.log(this.responseText);
+      //   if (this.responsetext == 1 && general_data.shutdown == 0) {
+      //     alert('success', 'You have turn on reservation');
+      //   } 
+      //   else if (this.responsetext == 0 && general_data.shutdown == 1) {
+      //     alert('success', 'You have turned off reservations');
+      //   } 
+      //   else {
+      //     alert('error','an error has occured');
+      //   }
+      //   get_general();
+      // }
+      // xhr.send('upd_shutdown=' + val);
+      xhr.onload = function() {
+        //console.log(this.responseText);
+        if (this.responseText == 1 && general_data.shutdown == 0) {
+          alert('success', 'You have turn off reservation');
+        } else {
+          alert('success', 'You have turned on reservations');
+        }
+        get_general();
+      }
+      xhr.send('upd_shutdown=' + val);
+    }
+
+    function get_contacts() {
+      let contacts_p_id = ['address', 'gmap', 'pn1', 'pn2', 'email1', 'email2', 'fb', 'insta', 'tw', 'ws', 'bk'];
+      let iframe = document.getElementById('iframe');
+      let xhr = new XMLHttpRequest();
+      xhr.open("POST", "logic/settings_crud.php", true);
+      xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+      // xhr.onload = function() {
+      //   console.log(this.responseText);
+      //   contacts_data = JSON.parse(this.responsetext);
+      //   contacts_data = object.values(contacts_data);
+
+      //   for (i = 0; i < contacts_p_id.length; i++) {
+      //     document.getelementbyid(contacts_p_id[i]).innertext = contacts_data[i + 1];
+      //   }
+      //   iframe.src = contacts_data[9];
+      //   contacts_inp(contacts_data);
+      // }
+      xhr.onload = function() {
+        contacts_data = JSON.parse(this.responseText);
+        contacts_data = Object.values(contacts_data);
+
+        for (i = 0; i < contacts_p_id.length; i++) {
+          document.getElementById(contacts_p_id[i]).innerText = contacts_data[i + 1];
+        }
+        iframe.src = contacts_data[9];
+        contacts_inp(contacts_data);
+      }
+
+      xhr.send('get_contacts');
+    }
+
+    function contacts_inp(data) {
+      let contacts_inp_id = ['address', 'gmap', 'pn1', 'pn2', 'email1', 'email2', 'fb', 'insta', 'tw', 'ws', 'bk'];
+
+      for (j = 0; j < contacts_inp_id.length; j++) {
+        document.getelementbyid(contacts_inp_id[i]).value = data[j + 1];
+      }
+    }
+
+    // contact_s_form.addeventlistener('submit', function(e) {
+    //   e.preventdefault();
+    //   upd_contacts();
+    // });
+
+    function upd_contacts() {
+      let index = ['address', 'gmap', 'pn1', 'pn2', 'email', 'fb', 'insta', 'tw', 'ws', 'bk'];
+      let contacts_inp_id = ['address_inp', 'gmap_inp', 'pn1_inp', 'pn2_inp', 'email_inp', 'fb_inp', 'insta_inp', 'tw_inp', 'ws_inp', 'bk_inp']
+      let data_str = '';
+
+      for (i = 0; i < index.length; i++) {
+        data_str += index[i] + "=" + document.getelementbyid(contacts_inp_id[i]).value + '&';
+      }
+      data_str += "upd_contacts";
+
+      let xhr = new XMLHttpRequest();
+      xhr.open("POST", "logic/settings_crud.php", true);
+      xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+      xhr.onload = function() {
+        var mymodal = document.getelementbyid('contacts-s');
+        var modal = bootstrap.modal.getinstance(mymodal);
+        modal.hide();
+        if (this.responsetext == 1) {
+          alert('success', 'the following changes have been saved');
+          get_contacts();
+        } else {
+          alert('error', 'no changes have been made to this field');
+        }
+      }
+      xhr.send(data_str);
+    }
+
+
+    window.onload = function() {
+      get_general();
+      //get_contacts();
+    }
+  </script>
 
 </body>
 
