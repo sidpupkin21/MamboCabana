@@ -27,18 +27,18 @@
   <script src="https://kit.fontawesome.com/c8c1f4e6df.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
   <!-- Initialize Swiper -->
-  <script src="script.js"></script>
+  <script src="js/script.js"></script>
   <script>
-    var swiper = new Swiper(".mySwiper", {
-      spaceBetween: 30,
-      centeredSlides: true,
-      effect: "fade",
-      loop: true,
-      autoplay: {
-        delay: 4000,
-        disableOnInteraction: false,
-      },
-    });
+    // var swiper = new Swiper(".mySwiper", {
+    //   spaceBetween: 30,
+    //   centeredSlides: true,
+    //   effect: "fade",
+    //   loop: true,
+    //   autoplay: {
+    //     delay: 4000,
+    //     disableOnInteraction: false,
+    //   },
+    // });
   </script>
 
   <?php

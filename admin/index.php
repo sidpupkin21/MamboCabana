@@ -5,7 +5,7 @@ require("../admin/db/db_config.php");
 session_start();
 
 if ((isset($_SESSION['adminLogin']) && $_SESSION['adminLogin'] == true)) {
-    redirect('admin/dashboard.php');
+    redirect('settings.php');  //dashboard.php
 }
 ?>
 
@@ -63,7 +63,7 @@ if ((isset($_SESSION['adminLogin']) && $_SESSION['adminLogin'] == true)) {
             //session_start();
             $_SESSION["adminLogin"] = true;
             $_SESSION["adminId"] = $row['sr_no'];
-            redirect('dashboard.php');
+            redirect('settings.php'); //dashboard.php
         } else {
             alert('error', 'Login has failed - Invalid Username/Password');
         }

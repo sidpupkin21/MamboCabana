@@ -1,8 +1,8 @@
 <?php
 require("../admin/db/funcs.php");
-// require("../admin/db/db_config.php");
+//require("../admin/db/db_config.php");
 adminLogin();
- //session_regenerate_id(true);
+//session_regenerate_id(true);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -144,10 +144,6 @@ adminLogin();
                     <span id="bk"></span>
                   </p>
                 </div>
-                <div class="mb-4">
-                  <h6 class="card-subtitle mb-1 fw-bold">iFrame</h6>
-                  <iframe id="iframe" class="border p-2 w-100" loading="lazy"></iframe>
-                </div>
               </div>
             </div>
           </div>
@@ -159,7 +155,7 @@ adminLogin();
             <form id="contacts_s_form">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title">Contacts Setting</h5>
+                  <h5 class="modal-title">Contacts Settings</h5>
                 </div>
                 <div class="modal-body">
                   <div class="container-fluid p-0">
@@ -174,78 +170,98 @@ adminLogin();
                           <input type="text" name="gmap" id="gmap_inp" class="form-control shadow-none" required>
                         </div>
                         <div class="mb-3">
-                          <label class="form-label fw-bold">Phone Numbers </label>
+                          <label class="form-label fw-bold">Phone Numbers (with country code)</label>
                           <div class="input-group mb-3">
-                            <span class="input-group-text">
-                              <i class="bi bi-telephone-fill"></i>
-                            </span>
-                            <input type="number" name="pn1" id="pn1_inp" class="form-control shadow-none" required>
+                            <span class="input-group-text"><i class="bi bi-telephone-fill"></i></span>
+                            <input type="text" name="pn1" id="pn1_inp" class="form-control shadow-none" required>
                           </div>
                           <div class="input-group mb-3">
                             <span class="input-group-text"><i class="bi bi-telephone-fill"></i></span>
-                            <input type="number" name="pn2" id="pn2_inp" class="form-control shadow-none">
+                            <input type="text" name="pn2" id="pn2_inp" class="form-control shadow-none">
                           </div>
                         </div>
                         <div class="mb-3">
-                          <label class="form-label fw-bold">Emails</label>
-                          <input type="email" name="email1" id="email1_inp" class="form-control shadow-none" required>
-                        </div>
-                        <div class="mb-3">
-                          <input type="email" name="email2" id="email2_inp" class="form-control shadow-none" required>
+                          <label class="form-label fw-bold">Email</label>
+                          <input type="email" name="email" id="email1_inp" class="form-control shadow-none" required>
+                          <input type="email" name="email" id="email2_inp" class="form-control shadow-none" required>
                         </div>
                       </div>
-                      <div class="col-md-6">
+                      <div class="col-lg-6">
                         <div class="mb-3">
                           <label class="form-label fw-bold">Social Links</label>
                           <div class="input-group mb-3">
-                            <span class="input-group-text"><i class="bi bi-facebook"></i></span>
+                            <span class="input-group-text"><i class="bi bi-facebook me-1"></i></span>
                             <input type="text" name="fb" id="fb_inp" class="form-control shadow-none" required>
                           </div>
                           <div class="input-group mb-3">
-                            <span class="input-group-text"><i class="bi bi-instagram"></i></span>
+                            <span class="input-group-text"><i class="bi bi-instagram me-1"></i></span>
                             <input type="text" name="insta" id="insta_inp" class="form-control shadow-none" required>
                           </div>
                           <div class="input-group mb-3">
-                            <span class="input-group-text"><i class="bi bi-twitter"></i></span>
+                            <span class="input-group-text"><i class="bi bi-twitter me-1"></i></span>
                             <input type="text" name="tw" id="tw_inp" class="form-control shadow-none" required>
                           </div>
                           <div class="input-group mb-3">
-                            <span class="input-group-text"><i class="bi bi-whatsapp"></i></span>
+                            <span class="input-group-text"><i class="bi bi-whatsapp me-1"></i></span>
                             <input type="text" name="ws" id="ws_inp" class="form-control shadow-none" required>
                           </div>
                           <div class="input-group mb-3">
-                            <span class="input-group-text"><i class="bi bi-bootstrap"></i></span>
+                            <span class="input-group-text"><i class="bi bi-bootstrap me-1"></i></span>
                             <input type="text" name="bk" id="bk_inp" class="form-control shadow-none" required>
                           </div>
                         </div>
-                        <div class="mb-3">
-                          <label class="form-label fw-bold">iFrame SRC</label>
-                          <input type="text" name="iframe" id="iframe_inp" class="form-control shadow-none" required>
+                        <!-- <div class="mb-4">
+                          <h6 class="card-subtitle mb-1 fw-bold">Social Links</h6>
+                          <p class="card-text mb-1">
+                            <i class="bi bi-facebook me-1"></i>
+                            <span id="fb_inp"></span>
+                          </p>
+                          <p class="card-text mb-1">
+                            <i class="bi bi-instagram me-1"></i>
+                            <span id="insta_inp"></span>
+                          </p>
+                          <p class="card-text">
+                            <i class="bi bi-twitter me-1"></i>
+                            <span id="tw_inp"></span>
+                          </p>
+                          <p class="card-text">
+                            <i class="bi bi-whatsapp me-1"></i>
+                            <span id="ws_inp"></span>
+                          </p>
+                          <p class="card-text">
+                            <i class="bi bi-bootstrap me-1"></i>
+                            <span id="bk_inp"></span>
+                          </p>
                         </div>
+                       -->
                       </div>
                     </div>
                   </div>
+                  <div class="modal-footer">
+                    <button type="button" onclick="contacts_inp(contacts_data)" class="btn text-secondary shadow-none" data-bs-dismiss="modal">CANCEL</button>
+                    <button type="submit" class="btn custom-bg text-white shadow-none">SUBMIT</button>
+                  </div>
                 </div>
-                <div class="modal-footer">
-                  <button type="button" onclick="contacts_inp(contacts_data)" class="btn text-secondary shadow-none" data-bs-dismiss="modal">CANCEL</button> <!--onclick="contacts_inp(contacts_data)"-->
-                  <button type="submit" class="btn custom-bg text-white shadow-none">SUBMIT</button>
-                </div>
-              </div>
+            </form>
           </div>
-          </form>
         </div>
+
       </div>
 
-
     </div>
+  </div>
+
+
+  </div>
   </div>
 
   <?php
   require("../admin/db/scripts.php") ?>
 
-  <!-- <script src="../admin/js/settings.js"></script> -->
-  <script>
-    let general_data;
+  <script src="../admin/js/settings.js"></script>
+  <!-- <script>
+    let general_data, contacts_data;
+    let general_s_form = document.getElementById('general_s_form');
 
     let site_logo_inp = document.getElementById('site_logo_inp');
     let site_about_inp = document.getElementById('site_about_inp');
@@ -265,8 +281,6 @@ adminLogin();
       xhr.onload = function() {
         general_data = JSON.parse(this.responseText);
         console.log(general_data);
-
-
         site_logo.innerText = general_data.site_logo;
         site_logo_inp.value = general_data.site_logo;
 
@@ -299,7 +313,7 @@ adminLogin();
 
 
       xhr.onload = function() {
-        // console.log(this.responseText);
+        console.log(this.responseText);
         var mymodal = document.getElementById('general-s');
         var modal = bootstrap.Modal.getInstance(mymodal);
         modal.hide();
@@ -322,22 +336,8 @@ adminLogin();
       xhr.open("POST", "logic/settings_crud.php", true);
       xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
-      // xhr.onload = function() {
-      //   // console.log(this.responseText);
-      //   if (this.responsetext == 1 && general_data.shutdown == 0) {
-      //     alert('success', 'You have turn on reservation');
-      //   } 
-      //   else if (this.responsetext == 0 && general_data.shutdown == 1) {
-      //     alert('success', 'You have turned off reservations');
-      //   } 
-      //   else {
-      //     alert('error','an error has occured');
-      //   }
-      //   get_general();
-      // }
-      // xhr.send('upd_shutdown=' + val);
       xhr.onload = function() {
-        //console.log(this.responseText);
+        console.log(this.responseText);
         if (this.responseText == 1 && general_data.shutdown == 0) {
           alert('success', 'You have turn off reservation');
         } else {
@@ -349,83 +349,32 @@ adminLogin();
     }
 
     function get_contacts() {
-      let contacts_p_id = ['address', 'gmap', 'pn1', 'pn2', 'email1', 'email2', 'fb', 'insta', 'tw', 'ws', 'bk'];
-      let iframe = document.getElementById('iframe');
+      let contacts_p_id = ['address', 'gmap', 'pn1', 'pn2', 'email1','email2' ,'fb', 'insta', 'tw','ws','bk'];
+
       let xhr = new XMLHttpRequest();
       xhr.open("POST", "logic/settings_crud.php", true);
       xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-      // xhr.onload = function() {
-      //   console.log(this.responseText);
-      //   contacts_data = JSON.parse(this.responsetext);
-      //   contacts_data = object.values(contacts_data);
 
-      //   for (i = 0; i < contacts_p_id.length; i++) {
-      //     document.getelementbyid(contacts_p_id[i]).innertext = contacts_data[i + 1];
-      //   }
-      //   iframe.src = contacts_data[9];
-      //   contacts_inp(contacts_data);
-      // }
       xhr.onload = function() {
         contacts_data = JSON.parse(this.responseText);
         contacts_data = Object.values(contacts_data);
+        console.log(this.responseText);
 
         for (i = 0; i < contacts_p_id.length; i++) {
           document.getElementById(contacts_p_id[i]).innerText = contacts_data[i + 1];
         }
-        iframe.src = contacts_data[9];
-        contacts_inp(contacts_data);
       }
 
       xhr.send('get_contacts');
     }
 
-    function contacts_inp(data) {
-      let contacts_inp_id = ['address', 'gmap', 'pn1', 'pn2', 'email1', 'email2', 'fb', 'insta', 'tw', 'ws', 'bk'];
-
-      for (j = 0; j < contacts_inp_id.length; j++) {
-        document.getelementbyid(contacts_inp_id[i]).value = data[j + 1];
-      }
-    }
-
-    // contact_s_form.addeventlistener('submit', function(e) {
-    //   e.preventdefault();
-    //   upd_contacts();
-    // });
-
-    function upd_contacts() {
-      let index = ['address', 'gmap', 'pn1', 'pn2', 'email', 'fb', 'insta', 'tw', 'ws', 'bk'];
-      let contacts_inp_id = ['address_inp', 'gmap_inp', 'pn1_inp', 'pn2_inp', 'email_inp', 'fb_inp', 'insta_inp', 'tw_inp', 'ws_inp', 'bk_inp']
-      let data_str = '';
-
-      for (i = 0; i < index.length; i++) {
-        data_str += index[i] + "=" + document.getelementbyid(contacts_inp_id[i]).value + '&';
-      }
-      data_str += "upd_contacts";
-
-      let xhr = new XMLHttpRequest();
-      xhr.open("POST", "logic/settings_crud.php", true);
-      xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-
-      xhr.onload = function() {
-        var mymodal = document.getelementbyid('contacts-s');
-        var modal = bootstrap.modal.getinstance(mymodal);
-        modal.hide();
-        if (this.responsetext == 1) {
-          alert('success', 'the following changes have been saved');
-          get_contacts();
-        } else {
-          alert('error', 'no changes have been made to this field');
-        }
-      }
-      xhr.send(data_str);
-    }
-
 
     window.onload = function() {
       get_general();
-      //get_contacts();
+      get_contacts();
+
     }
-  </script>
+  </script> -->
 
 </body>
 
