@@ -1,22 +1,22 @@
 <?php
 require("db/funcs.php");
-require("db/db_config.php");
 adminLogin();
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - Carousel</title>
-    <?php require('../admin/db/links.php');?>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin - Carousel</title>
+  <?php require('../admin/db/links.php'); ?>
 </head>
 
 <body class="bg-light">
-    <?php require("../admin/db/header.php"); ?>
-    <div class="container-fluid" id="main-content">
+  <?php require("../admin/db/header.php"); ?>
+
+  <div class="container-fluid" id="main-content">
         <div class="row">
             <div class="col-lg-10 ms-auto p-4 overflow-hidden">
                 <h3 class="mb-4">CAROUSEL</h3>
@@ -58,10 +58,82 @@ adminLogin();
             </div>
         </div>
     </div>
+   
+ <?php
+  require("../admin/db/scripts.php") ?>
+  <script>
+    let carousel_s_form = document.getElementById('carousel_s_form');
+    let carousel_picture_inp = document.getElementById('carousel_picture_inp');
 
 
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
+    carousel_s_form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      add_image();
+    });
+
+    function add_image() {
+      let data = new FormData();
+      data.append('picture', carousel_picture_inp.files[0]);
+      data.append('add_image', '');
+
+      let xhr = new XMLHttpRequest();
+      xhr.open("POST", "logic/carousel_crud.php", true);
+
+      xhr.onload = function() {
+        console.log(this.responseText);
+        var myModal = document.getElementById('carousel-s');
+        var modal = bootstrap.Modal.getInstance(myModal);
+        modal.hide();
+
+        if (this.responseText == 'inv_img') {
+          alert('error', 'Only JPG and PNG images are allowed!');
+        } else if (this.responseText == 'inv_size') {
+          alert('error', 'Image should be less than 2MB!');
+        } else if (this.responseText == 'upd_failed') {
+          alert('error', 'Image upload failed. Server Down!');
+        } else {
+          alert('success', 'New image added!');
+          carousel_picture_inp.value = '';
+          get_carousel();
+        }
+      }
+
+      xhr.send(data);
+    }
+
+    function get_carousel() {
+      let xhr = new XMLHttpRequest();
+      xhr.open("POST", "logic/carousel_crud.php", true);
+      xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+      xhr.onload = function() {
+        document.getElementById('carousel-data').innerHTML = this.responseText;
+      }
+
+      xhr.send('get_carousel');
+    }
+
+    function rem_image(val) {
+      let xhr = new XMLHttpRequest();
+      xhr.open("POST", "logic/carousel_crud.php", true);
+      xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+      xhr.onload = function() {
+        if (this.responseText == 1) {
+          alert('success', 'Image removed!');
+          get_carousel();
+        } else {
+          alert('error', 'Server down!');
+        }
+      }
+
+      xhr.send('rem_image=' + val);
+    }
+
+    window.onload = function() {
+      get_carousel();
+    }
+  </script>
 
 </body>
 

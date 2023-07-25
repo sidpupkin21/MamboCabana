@@ -273,7 +273,7 @@ input::-webkit-inner-spin-button {
   margin-bottom: 10px;
 } */
 .h-line {
-  width: 10%;
+  width: 15%;
   /* Adjust the width as desired */
   height: 1px;
   background-color: #000000;
@@ -288,6 +288,6 @@ input::-webkit-inner-spin-button {
 
 .pop:hover {
   border-top-color: var(--teal) !important;
-  transform: scale(1.03);
+  transform: scale(1.50);
   transition: all 0.3s;
 }

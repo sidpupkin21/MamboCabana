@@ -2,7 +2,7 @@
 TODO: NAV LINKS & Background
 navbar bg-body-tertiary fixed-top-->
 <nav class="navbar bg-body-tertiary fixed-top bg-light px-lg-3 py-lg-2 shadow-none sticky-top rounded">
-    <div class="container-fluid">
+    <div class="container-fluid bg-white">
       <a class="navbar-brand"><img src="images/logo/main.jpeg" width="250"  height="100"/></a>
       <div class="d-flex">
         <button class="btn btn-outline-success shadow me-4 btn-md">Reserve</button>
@@ -50,6 +50,9 @@ navbar bg-body-tertiary fixed-top-->
           </li>
           <li class="nav-item">
             <a class="nav-link" aria-current="page" href="contact.php">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="admin/index.php">Admin</a>
           </li>
         </div>
       </div>

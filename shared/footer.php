@@ -1,73 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<?php 
-require('shared/links.php'); ?>
-</head>
-<body>
-<!--Footer-->
-<footer class="footer-area section-padding-80-0">
-    <div class="main-footer-area">
-        <div class="container">
-            <div class="row align-items-baseline justify-content-between">
+<div class="container-fluid bg-white mt-5 rounded-top">
+    <div class="row">
+        <!-- <div class="col-lg-4 col-md-8 p-4 mb-lg-0 mb-3 bg-white rounded"> -->
+        <div class="col-lg-4 p-4">
+            <div class="bg-white p-4 rounded mb-4">
+                <img src="images/logo/footer1.png" class="w-75 rounded align-items-center" height="300" />
+            </div>
+        </div>
+        <div class="col-lg-4 p-4">
+            <h5 class="mb-3">Site Navigation</h5>
+            <a href="index.php" class="d-inline-block mb-2 text-dark text-decoration-none">Home</a></br />
+            <a href="" class="d-inline-block mb-2 text-dark text-decoration-none">Rooms & Suites</a></br />
+            <a href="" class="d-inline-block mb-2 text-dark text-decoration-none">Facilities</a></br />
+            <a href="" class="d-inline-block mb-2 text-dark text-decoration-none">Activities & Locations</a></br />
+            <a href="" class="d-inline-block mb-2 text-dark text-decoration-none">Client Reviews</a></br />
+            <a href="" class="d-inline-block mb-2 text-dark text-decoration-none">Contact Us</a></br />
 
-                <!--Hotel Information & contact-->
-                <div class="col-12 col-sm-6 col-lg-0">
-                    <div class="single-footer-widget mb-80">
-                        <!--Footer logo goes here-->
-                        <a class="footer-logo" >
-                            <img src="images/logo/01.png" class="blend-image" width="500" height="500" />
-                        </a>
-                        <!-- <h6>Tel: +255-776-886-630</h6>
-                        <h6>Tel: +971-52-218-1823</h6>
-                        <span>admin@email.com</span>
-                        <span>Address goes here</span> -->
+        </div>
+
+    </div>
+    <div class="container">
+        <div class="copywrite-content">
+            <div class="row align-items-center">
+                <div class="col-12">
+                    <div class="copywrite-text" >
+                        <p style="font-size:25px;">&copy; Scope Management | All rights reserved</p>
                     </div>
                 </div>
-
-                <!--Widget Area with page links-->
-                <div class="col-5 col-sm-4 col-lg-3">
-                    <div class="single-footer-widget mb-80">
-                        <!-- <h5 class="widget-title">Links</h5>
-                        <ul class="footer-nav">
-                            <li style="list-style-type: none;"><a href="rooms.php"><iconify-icon icon="bi:caret-right"></iconify-icon>Rooms & Suites</a></li>
-                            <li style="list-style-type: none;"><a href="facilities.php"><iconify-icon icon="bi:caret-right"></iconify-icon>Facilities</a></li>
-                            <li style="list-style-type: none;"><a href="activityLocationTips.php"><iconify-icon icon="bi:caret-right"></iconify-icon>Activities & Location & Tips</a></li>
-                            <li style="list-style-type: none;"><a href="clientReviews.php"><iconify-icon icon="bi:caret-right"></iconify-icon>Client Reviews</a></li>
-                            <li style="list-style-type: none;"><a href="contact.php"><iconify-icon icon="bi:caret-right"></iconify-icon>Contact</a></li>
-                        </ul> -->
-                        <h6 style="font-size:175%">Tel: +255-776-886-630</h6>
-                        <h6 style="font-size:175%">Tel: +971-52-218-1823</h6>
-                        <span>admin@email.com</span>
-                        <span>Address goes here</span>
-                    </div>
-                </div>
-
-                <!--Copyright Area-->
-                <div class="container">
-                    <div class="copywrite-content">
-                        <div class="row align-items-center">
-                            <div class="col-12">
-                                <div class="copywrite-text" style="font-size:25px;">
-                                    <p>&copy; Scope Management | All rights reserved</p>
-                                </div>
-                                <div class="social-info">
-                                    <!-- Add Links to socials here -->
-                                    <a href="#"><iconify-icon icon="ant-design:facebook-filled"></iconify-icon></a>
-                                    <a href="https://www.booking.com/hotel/tz/villa-fiona-marumbi.en-gb.html?aid=304142&label=gen173nr-1FCAEoggI46AdIM1gEaAKIAQGYAQm4ARfIAQzYAQHoAQH4AQyIAgGoAgO4AonIhqQGwAIB0gIkZjJkOGNhNDgtMzlhMi00MDE3LWFlZWYtYTg1YTg2NTI3ZDU42AIG4AIB&sid=bd321b716a00704b5f020c5231bc725b&all_sr_blocks=701788004_288735695_2_42_0;checkin=2023-06-27;checkout=2023-06-28;dest_id=-2568070;dest_type=city;dist=0;group_adults=2;group_children=0;hapos=1;highlighted_blocks=701788004_288735695_2_42_0;hpos=1;matching_block_id=701788004_288735695_2_42_0;no_rooms=1;req_adults=2;req_children=0;room1=A%2CA;sb_price_type=total;sr_order=popularity;sr_pri_blocks=701788004_288735695_2_42_0__8500;srepoch=1686313086;srpvid=17b5567ecd8a0137;type=total;ucfs=1&#hotelTmpl"><iconify-icon icon="tabler:brand-booking"></iconify-icon></a>
-                                    <a href="#"><iconify-icon icon="mdi:instagram"></iconify-icon></a>
-                                    <a href="#"><iconify-icon icon="mdi:twitter"></iconify-icon></a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
             </div>
         </div>
     </div>
-</footer>
-</body>
-</html>
+</div>
