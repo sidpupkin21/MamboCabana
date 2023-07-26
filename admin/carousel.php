@@ -26,7 +26,7 @@ adminLogin();
                         <div class="d-flex align-items-center justify-content-between mb-3">
                             <h5 class="card-title m-0">Images</h5>
                             <button type="button" class="btn btn-dark shadow-none btn-sm" data-bs-toggle="modal" data-bs-target="#carousel-s">
-                                <i class="bi bi-plus-square"></i>Add
+                            ADD <i class="bi bi-plus-square"></i>
                             </button>
                         </div>
 
@@ -48,7 +48,7 @@ adminLogin();
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" onclick="carousel_picture.value=''" class="btn text-secondary shadow-none" data-bs-dismiss="modal">CANCEL</button>
+                                    <button type="button" onclick="carousel_picture.value=''" class="btn btn-danger text-white shadow-none" data-bs-dismiss="modal">CANCEL</button>
                                     <button type="submit" class="btn custom-bg text-white shadow-none">SUBMIT</button>
                                 </div>
                             </div>

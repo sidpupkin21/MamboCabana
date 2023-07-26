@@ -4,10 +4,12 @@
 define('SITE_URL', 'http://localhost:3000/');
 
 define('CAROUSEL_IMG_PATH',SITE_URL.'/images/carousel/');
+define('ROOMS_IMG_PATH',SITE_URL.'/images/rooms/');
 
 //BackEnd process UPLOADs
 define('UPLOAD_IMAGE_PATH',$_SERVER['DOCUMENT_ROOT'].'/images/');
 define('CAROUSEL_FOLDER','carousel/');
+define('ROOMS_FOLDER','rooms/');
 
 
 //TODO

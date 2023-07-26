@@ -31,9 +31,9 @@ adminLogin();
                 <div class="card border-0 shadow-sm mb-4">
                     <div class="card-body">
                         <div class="d-flex align-items-center justify-content-between mb-3">
-                            <h5 class="card-title m-0">Features</h5>
+                            <h5 class="card-title m-0">Feature</h5>
                             <button type="button" class="btn btn-dark shadow-none btn-sm" data-bs-toggle="modal" data-bs-target="#feature-s">
-                                <i class="bi bi-plus-square"></i>Add
+                                ADD <i class="bi bi-plus-square"></i>
                             </button>
                         </div>
 
@@ -41,9 +41,9 @@ adminLogin();
                             <table class="table table-hover border">
                                 <thead>
                                     <tr class="bg-dark text-light">
-                                        <th scope="col">#ID</th>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">Icon</th>
+                                        <th scope="col" width="5%">#ID</th>
+                                        <th scope="col"width="20%">Name</th>
+                                        <th scope="col" width="10%">Icon</th>
                                         <th scope="col">Action</th>
                                     </tr>
                                 </thead>
@@ -55,18 +55,18 @@ adminLogin();
                 <div class="card border-0 shadow-sm mb-4">
                     <div class="card-body">
                         <div class="d-flex align-items-center justify-content-between mb-3">
-                            <h5 class="card-title m-0">Facilities</h5>
+                            <h5 class="card-title m-0">Facility</h5>
                             <button type="button" class="btn btn-dark shadow-none btn-sm" data-bs-toggle="modal" data-bs-target="#facility-s">
-                                <i class="bi bi-plus-square"></i>Add
+                               ADD <i class="bi bi-plus-square"></i>
                             </button>
                         </div>
                         <div class="table-responsive-md" style="height: 350px; overflow-y:scroll;">
                             <table class="table table-hover border">
                                 <thead>
                                     <tr class="bg-dark text-light">
-                                        <th scope="col">#ID</th>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">Icon</th>
+                                        <th scope="col" width="5%">#ID</th>
+                                        <th scope="col" width="20%">Name</th>
+                                        <th scope="col" width="10%">Icon</th>
                                         <th scope="col" width="40%">Description</th>
                                         <th scope="col">Action</th>
                                     </tr>
@@ -100,7 +100,7 @@ adminLogin();
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="reset" class="btn text-secondary shadow-none" data-bs-dismiss="modal">CANCEL</button>
+                        <button type="reset" class="btn btn-danger text-white shadow-none" data-bs-dismiss="modal">CANCEL</button>
                         <button type="submit" class="btn custom-bg text-white shadow-none">SUBMIT</button>
                     </div>
                 </div>
@@ -130,7 +130,7 @@ adminLogin();
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="reset" class="btn text-secondary shadow-none" data-bs-dismiss="modal">CANCEL</button>
+                        <button type="reset" class="btn btn-danger text-white shadow-none" data-bs-dismiss="modal">CANCEL</button>
                         <button type="submit" class="btn custom-bg text-white shadow-none">SUBMIT</button>
                     </div>
                 </div>
@@ -139,6 +139,9 @@ adminLogin();
     </div>
     <?php
     require("../admin/db/scripts.php") ?>
+    <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
     <script src="../admin/js/features_facilities.js"></script>
 </body>
 

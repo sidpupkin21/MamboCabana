@@ -15,16 +15,17 @@ if (isset($_POST['add_feature'])) {
 if (isset($_POST['get_features'])) {
   $res = selectAll('features');
   $i = 1;
-
+  // <iconify-icon icon="svg-spinners:wifi"></iconify-icon>
+  //<td><i class="$row[icon]"></i></td>
   while ($row = mysqli_fetch_assoc($res)) {
     echo <<<data
       <tr>
         <td>$i</td>
         <td>$row[name]</td>
-        <td><i class="$row[icon]"></i></td>
+        <td><iconify-icon icon="$row[icon]" width="50" height="50"></iconify-icon></td>
         <td>
           <button type="button" onclick="rem_feature($row[id])" class="btn btn-danger btn-sm shadow-none">
-            <i class="bi bi-trash"></i> Delete
+            <i class="bi bi-trash"></i>
           </button>
         </td>
       </tr>
@@ -68,11 +69,11 @@ if (isset($_POST['get_facilities'])) {
       <tr class='align-middle'>
         <td>$i</td>
         <td>$row[name]</td>
-        <td><i class="$row[icon]"></i></td>
+        <td><iconify-icon icon="$row[icon]" width="50" height="50"></iconify-icon></td>
         <td>$row[description]</td>
         <td>
               <button type="button" onclick="rem_facility($row[id])" class="btn btn-danger btn-sm shadow-none">
-                <i class="bi bi-trash"></i> Delete
+                <i class="bi bi-trash"></i>
               </button>
             </td>
       </tr>

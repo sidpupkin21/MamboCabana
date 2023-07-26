@@ -11,8 +11,8 @@
 </head>
 
 <body>
-  <?php require('shared/header.php'); 
-  ?>
+  <!-- <?php require('shared/header.php'); 
+  ?> -->
 
   <!--Titles-->
   <div class="my-5 px-4">
