@@ -69,7 +69,7 @@ function upd_shutdown(val) {
   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
   xhr.onload = function() {
-    console.log(this.responseText);
+    //console.log(this.responseText);
     if (this.responseText == 1 && general_data.shutdown == 0) {
       alert('success', 'You have turn off reservation');
     } else {
@@ -139,7 +139,7 @@ xhr.open("POST","logic/settings_crud.php",true);
 xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
 xhr.onload = function(){
-  console.log(this.responseText);
+  //console.log(this.responseText);
   var myModal = document.getElementById('contacts-s');
   var modal = bootstrap.Modal.getInstance(myModal);
   modal.hide();

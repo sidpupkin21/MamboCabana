@@ -166,52 +166,111 @@
     <div class="h-line bg-dark"></div>
     <div class="container">
         <div class="row">
-            <!--King ROOM-->
-            <div class="col-lg-4 col-md-6 my-3">
-                <div class="card border-0 shadow" style="max-width: 350px; margin: auto;" style="width: 20rem;">
-                    <img src="images/familyDouble4.jpg" class="card-img-top" />
-                    <div class="card-body">
-                        <h4 class="card-title fw-bold">KING ROOM</h4>
-                        <h6 class="mb-4">$120 per night</h6>
-                        <div class="features mb-4">
-                            <h6 class="mb-1 fw-bold">FEATURES</h6>
-                            <span class="badge rounded-pill bg-light text-dark text-wrap">1x KING
-                                <iconify-icon icon="ion:bed-outline" width="15" height="15"></iconify-icon>
-                            </span>
-                            <span class="badge rounded-pill bg-light text-dark text-wrap">50 &#13217;
-                                <iconify-icon icon="radix-icons:size" width="15" height="15"></iconify-icon>
-                            </span>
-                            <span class="badge rounded-pill bg-light text-dark text-wrap">GARDEN VIEW
-                                <iconify-icon icon="guidance:garden"></iconify-icon>
-                            </span>
-                            <span class="badge rounded-pill bg-light text-dark text-wrap">POOL VIEW
-                                <iconify-icon icon="ph:swimming-pool-thin"></iconify-icon>
-                            </span>
-                        </div>
-                        <div class="facilities mb-4">
-                            <h6 class="mb-1 fw-bold">FACILITIES</h6>
-                            <span class="badge rounded-pill bg-light text-dark text-wrap">AC
-                                <iconify-icon icon="streamline:travel-hotel-air-conditioner-heating-ac-air-hvac-cool-cooling-cold-hot-conditioning"></iconify-icon>
-                            </span>
-                            <span class="badge rounded-pill bg-light text-dark text-wrap">Balcony
-                                <iconify-icon icon="ic:round-balcony"></iconify-icon>
-                            </span>
-                        </div>
-                        <div class="rating mb-4">
-                            <h6 class="mb-1 fw-bold">RATING</h6>
-                            <!-- <span class="badge rounded-pill"> -->
-                            <iconify-icon icon="ic:twotone-star"></iconify-icon>
-                            <iconify-icon icon="ic:twotone-star"></iconify-icon>
-                            <iconify-icon icon="ic:twotone-star"></iconify-icon>
-                            <iconify-icon icon="ic:twotone-star"></iconify-icon>
-                            <iconify-icon icon="ic:twotone-star"></iconify-icon>
-                            <!-- </span> -->
+            <?php
+            $room_res = select("SELECT * FROM `rooms` WHERE `status`=? AND `removed`=? ORDER BY `id` ASC LIMIT 3", [1, 0], 'ii');
+
+            while ($room_data = mysqli_fetch_assoc($room_res)) {
+                //features of room
+                $fea_q = mysqli_query($conn, "SELECT f.name from `features` f
+                INNER JOIN `room_features` rfea ON f.id = rfea.features_id WHERE rfea.room_id = '$room_data[id]'");
+
+                $features_data = "";
+                while ($fea_row = mysqli_fetch_assoc($fea_q)) {
+                    $features_data .= "<span class='badge rounded-pill bg-light text-dark text-wrap me-1 mb-1'>
+                        $fea_row[name]
+                        </span>
+                    ";
+                }
+                //facilities of room
+                $fac_q = mysqli_query($conn, "SELECT f.name FROM `facilities` f 
+                INNER JOIN `room_facilities` rfac on f.id = rfac.facilities_id
+                WHERE rfac.room_id = '$room_data[id]'");
+
+                $facilities_data = "";
+                while ($fac_row = mysqli_fetch_assoc($fac_q)) {
+                    $facilities_data .= "<span class='badge rounded bg-light text-dark text-wrap me-1 mb-1'>
+                    $fac_row[name]
+                    </span>";
+                }
+
+                //thumbnail image of room
+                $room_thumb = ROOMS_IMG_PATH . "thumbnail.jpeg";
+                $thumb_q = mysqli_query($conn, "SELECT * FROM `room_images`
+                WHERE `room_id`='$room_data[id]' AND `THUMB`='1'");
+
+                if (mysqli_num_rows($thumb_q) > 0) {
+                    $thumb_res = mysqli_fetch_assoc($thumb_q);
+                    $room_thumb = ROOMS_IMG_PATH . $thumb_res['image'];
+                }
+
+                $book_btn = "";
+
+                if (!$settings_r['shutdown']) {
+                    $login = 0;
+                    if (isset($_SESSION['login']) && $_SESSION['login'] == true) {
+                        $login = 1;
+                    }
+                    $book_btn = "<button onclick='checkLoginToBook($login,$room_data[id])' 
+                    class='btn btn-sm text-white custom-bg shadow-none'>BOOK NOW</button>";
+                }
+
+                // $rating_q = "SELECT AVG(rating) AS `avg_rating` FROM `rating_review` WHERE `room_id`=$room_data[id]' ORDER BY `sr_no` DESC LIMIT 20";
+                // $rating_res = mysqli_query($conn, $rating_q);
+                // $rating_fetch = mysqli_fetch_assoc($rating_res);
+                // $rating_data = "";
+
+                // if ($rating_fetch['avg_rating'] != NULL) {
+                //     $rating_data = "<div class='rating mb-4'>
+                //     <h6 class='mb-1'>Rating</h6>
+                //     <span class='badge rounded-pill bg-light'>";
+
+                //     for ($i = 0; $i < $rating_fetch['avg_rating']; $i++) {
+                //         $rating_data .= "<i class='bi bi-star-fill text-warning'></i>";
+                //     }
+                //     $rating_data .= "</span> </div>";
+                // } <!--$rating_data goes above button-->
+
+                //display room card
+                echo <<<data
+                    <div class="col-lg-4 col-mb-6 my-3">
+                        <div class="card border-0 shadow" style="max-width:400px; max-height:auto; margin:auto;">
+                            <img src="$room_thumb" class="card-img-top">
+                            <div class="card-body">
+                                <h5>$room_data[name]</h5>
+                                <h6 class="mb-4">$$room_data[price] per night</h6>
+                                <h6 class="mb-4">$room_data[area] &#13217;</h6>
+                                <div class="features mb-4">
+                                    <h6 class="mb-1">Features</h6>
+                                    $features_data
+                                </div>
+                                <div class="facilities mb-4">
+                                    <h6 class="mb-1">Facilities</h6>
+                                    $facilities_data
+                                </div>
+                                <div class="guests mb-4">
+                                    <h6 class="mb-1">Guests</h6>
+                                    <span class="badge rounded-pill bg-light text-dark text-wrap">
+                                        $room_data[adult] Adults
+                                    </span>
+                                    <span class="badge rounded-pill bg-light text-dark text-wrap">
+                                        $room_data[children] Children
+                                    </span>
+                                </div>
+                                
+                                <div class="d-flex justify-content-evenly mb-2">
+                                    $book_btn
+                                    <a href="room_details.php?id=$room_data[id]" class="btn btn-sm btn-ouline-dark shadown-none">More Details</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <a href="#" class="btn btn-sm text-white custom-bg shadow-none">VIEW</a>
-                </div>
-            </div>
-            <!--Deluxe Double with Balcony ROOm -->
+
+                data;
+            }
+            ?>
+            <div class="col-lg-12 text-center mt-5">
+        <a href="rooms.php" class="btn btn-sm btn-outline-dark rounded-0 fw-bold shadow-none">More Rooms >>></a>
+      </div>
         </div>
 
     </div>
@@ -252,15 +311,15 @@
                     <h5>FOLLOW US</h5>
                     <!--Twitter-->
                     <?php
-                         if ($contact_r['tw'] != '') {
-                            echo <<<data
+                    if ($contact_r['tw'] != '') {
+                        echo <<<data
                                     <a href="$contact_r[tw]" class="d-inline-block mb-3">
                                         <span class="badge bg-white text-dark fs-6 p-2">
                                             <i class="bi bi-twitter me-1"></i>
                                         </span>
                                     </a>
                             data;
-                        }
+                    }
                     if ($contact_r['fb'] != '') {
                         echo <<<data
                                 <a href="$contact_r[fb]" class="d-inline-block mb-3">

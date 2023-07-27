@@ -140,7 +140,7 @@ function submit_edit_room() {
     xhr.open("POST", "logic/rooms.php", true);
 
     xhr.onload = function () {
-        console.log(this.responseText);
+        //console.log(this.responseText);
         var myModal = document.getElementById('edit-room');
         var modal = bootstrap.Modal.getInstance(myModal);
         modal.hide();
@@ -251,7 +251,7 @@ function thumb_image(img_id, room_id) {
     xhr.open("POST", "logic/rooms.php", true);
 
     xhr.onload = function(){
-        console.log(this.responseText);
+        //console.log(this.responseText);
         if(this.responseText == 1){
             alert('success','Image Thumbnail changed', 'image-alert');
             room_images(room_id, document.querySelector("#room-images .modal-title").innerText);
