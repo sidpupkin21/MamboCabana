@@ -47,6 +47,9 @@
                         <a class="nav-link text-light" aria-current="page" href="rooms.php">Rooms</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link text-light" aria-current="page" href="activity.php">Activities</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link text-light" aria-current="page" href="featuresFacilities.php">Features & Facilities</a>
                     </li>
                     <li class="nav-item">

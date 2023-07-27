@@ -179,35 +179,6 @@ add_image_form.addEventListener('submit', function (e) {
     add_image();
 });
 
-// function add_image() {
-//     let data = new FormData();
-//     data.append('image',add_image_form.elements['image'].files[0]);
-//     data.append('room_id',add_image_form.elements['room_id'].value);
-//     data.append('add_image','');
-//     let xhr = new XMLHttpRequest();
-//     xhr.open("POST", "logic/rooms.php", true);
-//     xhr.onload = function(){
-//         console.log(this.responseText);
-//         if(this.responseText == 'inv_img'){
-//             alert('error','try again with a different image format','image-alert');
-//         }
-//         else if(this.responseText == 'inv_size'){
-//             alert('error','try again with a small image size','image-alert');
-
-//         }
-//         else if(this.responseText == 'upd_failed'){
-//             alert('error', 'upload file error','image-alert');
-//         }
-//         else{
-//             alert('success','New image added!','image-alert');
-//             room_images(add_image_form.elements['room_id'].value,document.querySelector("#room-images .modal-title").innerText)
-//             add_image_form.reset();
-//         }
-//     }
-//     xhr.send(data);
-
-// }
-
 function add_image() {
     let data = new FormData();
     data.append('image', add_image_form.elements['image'].files[0]);
@@ -290,45 +261,8 @@ function thumb_image(img_id, room_id) {
         }
     }
     xhr.send(data);
-    // let data = new FormData();
-    // data.append('image_id', img_id);
-    // data.append('room_id', room_id);
-    // data.append('thumb_image', '');
-
-    // let xhr = new XMLHttpRequest();
-    // xhr.open("POST", "logic/rooms.php", true);
-
-    // xhr.onload = function () {
-    //     if (this.responseText == 1) {
-    //         alert('success', 'Image Thumbnail Changed!', 'image-alert');
-    //         room_images(room_id, document.querySelector("#room-images .modal-title").innerText);
-    //     }
-    //     else {
-    //         alert('error', 'Thumbnail update failed!', 'image-alert');
-    //     }
-    // }
-    // xhr.send(data);
 }
 function remove_room(room_id) {
-    // if (confirm("Are you sure, you want to delete this room?")) {
-    //     let data = new FormData();
-    //     data.append('room_id', room_id);
-    //     data.append('remove_room', '');
-
-    //     let xhr = new XMLHttpRequest();
-    //     xhr.open("POST", "logic/rooms.php", true);
-
-    //     xhr.onload = function () {
-    //         if (this.responseText == 1) {
-    //             alert('success', 'Room Removed!');
-    //             get_all_rooms();
-    //         } else {
-    //             alert('error', 'Room removal failed!');
-    //         }
-    //     }
-    //     xhr.send(data);
-    // }
-
     if (confirm("Are you sure, you want to delete this room?")) {
         let data = new FormData();
         data.append('room_id', room_id);

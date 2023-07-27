@@ -120,41 +120,7 @@ if (isset($_POST['get_all_rooms'])) {
     }
     echo $data;
 }
-/*
-<button type='button' onclick=\"room_images($row[id],'$row[name]')\" class='btn btn-info shadow-none btn-sm' data-bs-toggle='modal' data-bs-target='#room-images'>
-    <i class='bi bi-images'></i> 
-</button>
-<button type='button' onclick='remove_room($row[id])' class='btn btn-danger shadow-none btn-sm'>
-    <i class='bi bi-trash'></i> 
-</button>
-*/
 
-// if (isset($_POST['get_room'])) {
-//$frm_data = filternation($_POST);
-
-//     $res1 = select("SELECT * FROM `rooms` WHERE `id` =?", [$frm_data['get_rooms']], 'i');
-//     // $res2 = select("SELECT * FROM `room_features` WHERE `room_id`=?", [$frm_data['get_room']], 'i');
-//     // $res3 = select("SELECT * FROM `room_facilities` WHERE `room_id`=?", [$frm_data['get_room']], 'i');
-
-//     $roomdata = mysqli_fetch_assoc($res1);
-//     $features = [];
-//     $facilities = [];
-
-//     if (mysqli_num_rows($res2) > 0) {
-//         while ($row = mysqli_fetch_assoc($res2)) {
-//             array_push($features, $row['features_id']);
-//         }
-//     }
-//     if (mysqli_num_rows($res3) > 0) {
-//         while ($row = mysqli_fetch_assoc($res3)) {
-//             array_push($facilities, $row['facilities_id']);
-//         }
-//     }
-//     $data = ["roomdata" => $roomdata, "features" => $features, "facilities" => $facilities];
-
-//     $data = json_encode($data);
-//     echo $data;
-// }
 if (isset($_POST['get_room'])) {
     $frm_data = filternation($_POST);
 
@@ -271,31 +237,6 @@ if (isset($_POST['add_image'])) {
 }
 
 if (isset($_POST['get_room_images'])) {
-    // $frm_data = filternation($_POST);
-    // $res = select("SELECT * FROM `room_images` WHERE `room_id`=?", [$frm_data['get_room_images']], 'i');
-
-    // $path = ROOMS_IMG_PATH;
-
-    // while ($row = mysqli_fetch_assoc($res)) {
-    //     if ($row['thumb'] == 1) {
-    //         $thumb_btn = "<i class='bi bi-check-lg text-light bg-success px-2 py-1 rounded fs-5'></i>";
-    //     } else {
-    //         $thumb_btn = "<button onclick='thumb_image($row[sr_no],$row[room_id])' class='btn btn-secondary shadow-none'>
-    //       <i class='bi bi-check-lg'></i>
-    //     </button>";
-    //     }
-    //     echo <<<data
-    //         <tr class='align-middle'>
-    //             <td><img src='$path$row[image]' class='img-fluid'></td>
-    //             <td>$thumb_btn</td>
-    //             <td>
-    //                 <button onclick='rem_image($row[sr_no], $row[room_id])' class='btn btn-danger shadow-none'>
-    //                     <i class='bi bi-trash'></i>
-    //                 </button>
-    //             </td>
-    //         </tr> 
-    //         data;
-    // }
     $frm_data = filternation($_POST);
     $res = select("SELECT * FROM `room_images` WHERE `room_id`=?",
             [$frm_data['get_room_images']],'i');
@@ -307,6 +248,7 @@ if (isset($_POST['get_room_images'])) {
       if($row['thumb']==1){
         $thumb_btn = "<i class='bi bi-check-lg text-light bg-success px-2 py-1 rounded fs-5'></i>";
       }
+      
       else{
         $thumb_btn = "<button onclick='thumb_image($row[sr_no],$row[room_id])' class='btn btn-secondary shadow-none'>
           <i class='bi bi-check-lg'></i>
@@ -328,20 +270,6 @@ if (isset($_POST['get_room_images'])) {
 }
 
 if (isset($_POST['rem_image'])) {
-    // $frm_data = filternation($_POST);
-    // $values = [$frm_data['image_id'], $frm_data['room_id']];
-
-    // $pre_q = "SELECT * FROM `room_images` WHERE `sr_no`=? AND `room_id`=?";
-    // $res = select($pre_q, $values, 'ii');
-    // $img = mysqli_fetch_assoc($res);
-
-    // if (deleteImage($img['image'], ROOMS_FOLDER)) {
-    //     $q = "DELETE FROM `room_images` WHERE `sr_no`=? AND `room_id`=?";
-    //     $res = delete($q, $values, 'ii');
-    //     echo $res;
-    // } else {
-    //     echo 0;
-    // }
     $frm_data = filternation($_POST);
 
     $values = [$frm_data['image_id'],$frm_data['room_id']];

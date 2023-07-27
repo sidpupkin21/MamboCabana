@@ -86,7 +86,7 @@ function add_facility()
     xhr.onload = function(){
         var myModal = document.getElementById('facility-s');
         var modal = bootstrap.Modal.getInstance(myModal);
-        modal.hide()
+        modal.hide();
 
         if(this.responseText == 1){
             //console.log(this.responseText);

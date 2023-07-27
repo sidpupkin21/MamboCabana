@@ -75,7 +75,7 @@ if (isset($_POST['get_facilities'])) {
               <button type="button" onclick="rem_facility($row[id])" class="btn btn-danger btn-sm shadow-none">
                 <i class="bi bi-trash"></i>
               </button>
-            </td>
+        </td>
       </tr>
     data;
     $i++;
