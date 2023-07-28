@@ -31,20 +31,23 @@ navbar bg-body-tertiary fixed-top-->
                 Rooms & Suites
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="king.php">King Room</a></li>
-                <li><a class="dropdown-item" href="deluxeDoubleBalcony.php">Deluxe Double Room + Balcony</a></li>
-                <li><a class="dropdown-item" href="deluxeDouble.php">Deluxe Double Room</a></li>
-                <li><a class="dropdown-item" href="familyDouble.php">Family Double Room</a></li>
-                <li><a class="dropdown-item" href="budgetDouble.php">Budget Double Room</a></li>
+                <li><a class="dropdown-item" href="room_details.php?id=1">King Room</a></li>
+                <li><a class="dropdown-item" href="room_details.php?id=9">Deluxe Double Room + Balcony</a></li>
+                <li><a class="dropdown-item" href="room_details.php?id=10">Deluxe Double Room</a></li>
+                <li><a class="dropdown-item" href="room_details.php?id=8">Family Double Room</a></li>
+                <li><a class="dropdown-item" href="room_details.php?id=7">Budget Double Room</a></li>
                 <li><a class="dropdown-item" href="rooms.php">View All</a></li>
             </li>
           </ul>
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="facilities.php">Facilities</a>
+            <a class="nav-link" aria-current="page" href="activity.php">Activities</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="activityLocationTips.php">Activities & Location & Tips</a>
+            <a class="nav-link" aria-current="page" href="facilities.php">Facilities</a>
           </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="activityLocationTips.php">Activities & Location & Tips</a>
+          </li> -->
           <li class="nav-item">
             <a class="nav-link" aria-current="page" href="clientReviews.php">Client Reviews</a>
           </li>
