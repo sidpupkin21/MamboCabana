@@ -53,7 +53,7 @@ function upd_general(site_logo_val, site_about_val) {
     modal.hide();
     if (this.responseText == 1) {
       alert('success', 'General Settings have been updated');
-      get_general;
+      get_general();
 
     } else {
       alert('error', 'No changes have been made');

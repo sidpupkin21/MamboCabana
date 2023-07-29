@@ -24,11 +24,15 @@ function alert(type,msg,position='body')
   else{
     document.getElementById(position).appendChild(element);
   }
-  setTimeout(remAlert, 10000);
+  setTimeout(remAlert, 5000);
 }
 
 function remAlert(){
-  document.getElementsByClassName('alert')[0].remove();
+  var alertElement =document.getElementsByClassName('alert')[0];
+  if(alertElement){
+    alertElement.remove();
+  }
+  // document.getElementsByClassName('alert')[0].remove();
 }
 
   

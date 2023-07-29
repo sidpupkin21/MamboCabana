@@ -9,11 +9,13 @@
         <div class="col-lg-4 p-4">
             <h5 class="mb-3">Site Navigation</h5>
             <a href="index.php" class="d-inline-block mb-2 text-dark text-decoration-none">Home</a></br />
-            <a href="" class="d-inline-block mb-2 text-dark text-decoration-none">Rooms & Suites</a></br />
-            <a href="" class="d-inline-block mb-2 text-dark text-decoration-none">Facilities</a></br />
-            <a href="" class="d-inline-block mb-2 text-dark text-decoration-none">Activities & Locations</a></br />
+            <a href="rooms.php" class="d-inline-block mb-2 text-dark text-decoration-none">Rooms & Suites</a></br />
+            <a href="facilities.php" class="d-inline-block mb-2 text-dark text-decoration-none">Facilities</a></br />
+            <a href="activity.php" class="d-inline-block mb-2 text-dark text-decoration-none">Activities & Locations</a></br />
             <a href="" class="d-inline-block mb-2 text-dark text-decoration-none">Client Reviews</a></br />
-            <a href="" class="d-inline-block mb-2 text-dark text-decoration-none">Contact Us</a></br />
+            <a href="contact.php" class="d-inline-block mb-2 text-dark text-decoration-none">Contact Us</a></br />
+            <a href="admin/index.php" class="d-inline-block mb-2 text-dark text-decoration-none">Admin Portal</a></br />
+
 
         </div>
 

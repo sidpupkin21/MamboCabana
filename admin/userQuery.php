@@ -1,8 +1,109 @@
-<?php 
+<?php
 require("db/funcs.php");
 require("db/db_config.php");
+// require("db/scripts.php");
+
 adminLogin();
-?> 
+if(isset($_GET['seen']))
+  {
+    $frm_data = filternation($_GET);
+
+    if($frm_data['seen']=='all'){
+      $q = "UPDATE `user_query` SET `seen`=?";
+      $values = [1];
+      if(update($q,$values,'i')){
+        alert('success','Marked all as read!');
+      }
+      else{
+        alert('error','Operation Failed!');
+      }
+    }
+    else{
+      $q = "UPDATE `user_query` SET `seen`=? WHERE `sr_no`=?";
+      $values = [1,$frm_data['seen']];
+      if(update($q,$values,'ii')){
+        alert('success','Marked as read!');
+      }
+      else{
+        alert('error','Operation Failed!');
+      }
+    }
+  }
+
+  if(isset($_GET['del']))
+  {
+    $frm_data = filternation($_GET);
+
+    if($frm_data['del']=='all'){
+      $q = "DELETE FROM `user_query`";
+      if(mysqli_query($conn,$q)){
+        alert('success','All data deleted!');
+      }
+      else{
+        alert('error','Operation failed!');
+      }
+    }
+    else{
+      $q = "DELETE FROM `user_query` WHERE `sr_no`=?";
+      $values = [$frm_data['del']];
+      if(delete($q,$values,'i')){
+        alert('success','Data deleted!');
+      }
+      else{
+        alert('error','Operation failed!');
+      }
+    }
+  }
+// if(isset($_GET['seen'])){
+//     $frm_data = filternation($_GET);
+
+//     if($frm_data['seen']=='all'){
+//         $q = "UPDATE `user_query` SET `seen``=?";
+//         $values = [1];
+//         if(update($q, $values,'i')){
+//             alert('success','Marked all messages as read!');
+//         }
+//         else{
+//             alert('error','Operation Failed!');
+//         }
+//     }
+//     else{
+//         $q = "UPDATE `user_query` SET `seen`=? WHERE `sr_no`=?";
+//         $values = [1,$frm_data['seen']];
+//         if(update($q, $values,'ii')){
+//             alert('success',"Marked as read");
+//         }
+//         else{
+//             alert('error','Operation Failed!');
+//         }
+//     }
+// }
+
+// if(isset($_GET['del'])){
+//     $frm_data = filternation($_GET);
+
+//     if($frm_data['del']=='all'){
+//         $q = "DELETE FROM `user_query`";
+//         if(mysqli_query($conn, $q)){
+//             alert('success','All messages deleted!');
+//         }
+//         else{
+//             alert('error','Operation failed!');
+//         }
+
+//     }
+//     else{
+//         $q = "DELETE FROM `user_query` WHERE `sr_no`=?";
+//         $values = [$frm_data['del']];
+//         if(delete($q, $values,'i')){
+//             alert('success','Message have been deleted');
+//         }
+//         else{
+//             alert('error', 'Operation failed');
+//         }
+//     }
+// }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -45,7 +146,61 @@ adminLogin();
                                         <th scope="col">Action</th>
                                     </tr>
                                 </thead>
-                                <tbody><!--PHP SCRIPT--></tbody>
+                                <tbody>
+                                    <?php
+                                    // $q = "SELECT * FROM `user_query` ORDER BY `sr_no` DESC";
+                                    // $data = mysqli_query($conn, $q);
+                                    // $i =1;
+
+                                    // while($row = mysqli_fetch_assoc($data)){
+                                    //     //$date = date('d-m-Y',strtotime($row['datentime']));
+                                    //     $seen='';
+                                    //     if($row['seen']!=1){
+                                    //         $seen = "<a href='?seen=$row[sr_no]' class='btn btn-sm rounded-pill btn-primary'>Mark as read</a> <br>";
+                                    //     }
+                                    //     $seen .= "<a href='?del=$row[sr_no]' class='btn btn-sm rounded-pill btn-danger mt-2'>Delete</a>";
+
+                                    //     echo <<<query
+                                    //         <tr>
+                                    //             <td>$i</td>
+                                    //             <td>$row[name]</td>
+                                    //             <td>$row[email]</td>
+                                    //             <td>$row[subject]</td>
+                                    //             <td>$row[message]</td>
+                                    //             <td>$row[date]</td>
+                                    //             <td>$seen</td>
+                                    //         </tr>
+                                    //     query;
+                                    //     $i++;
+                                    // }
+                                    $q = "SELECT * FROM `user_query` ORDER BY `sr_no` DESC";
+                                    $data = mysqli_query($conn,$q);
+                                    $i=1;
+
+                                    while($row = mysqli_fetch_assoc($data))
+                                    {
+                                    //   $date = date('d-m-Y',strtotime($row['datentime']));
+                                      $seen='';
+                                      if($row['seen']!=1){
+                                        $seen = "<a href='?seen=$row[sr_no]' class='btn btn-sm rounded-pill btn-primary'>Mark as read</a> <br>";
+                                      }
+                                      $seen.="<a href='?del=$row[sr_no]' class='btn btn-sm rounded-pill btn-danger mt-2'>Delete</a>";
+
+                                      echo<<<query
+                                        <tr>
+                                          <td>$i</td>
+                                          <td>$row[name]</td>
+                                          <td>$row[email]</td>
+                                          <td>$row[subject]</td>
+                                          <td>$row[message]</td>
+                                          <td>$row[date]</td>
+                                          <td>$seen</td>
+                                        </tr>
+                                      query;
+                                      $i++;
+                                    }
+                                    ?>
+                                </tbody>
                             </table>
                         </div>
                     </div>
@@ -54,9 +209,10 @@ adminLogin();
         </div>
     </div>
 
-
+<!--
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script> -->
+    <?php require("db/scripts.php") ?>
 
 </body>
 
