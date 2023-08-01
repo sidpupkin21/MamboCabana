@@ -34,9 +34,9 @@ adminLogin();
                                         <th scope="col">#ID</th>
                                         <th scope="col">Name</th>
                                         <th scope="col">Email Address</th>
-                                        <th scope="col">Phone Number</th>
-                                        <th scope="col">Location</th>
-                                        <th scope="col">Date</th>
+                                        <th scope="col">Username</th>
+                                        <th scope="col">Phone</th>
+                                        <th scope="col">Date of birth</th>
                                         <th scope="col">Action</th>
                                     </tr>
                                 </thead>
@@ -51,6 +51,9 @@ adminLogin();
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
+    <?php require("db/scripts.php") ?>
+    <script src="../admin/js/users.js"></script>
+    
 
 </body>
 

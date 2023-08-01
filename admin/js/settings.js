@@ -71,7 +71,7 @@ function upd_shutdown(val) {
   xhr.onload = function() {
     //console.log(this.responseText);
     if (this.responseText == 1 && general_data.shutdown == 0) {
-      alert('success', 'You have turn off reservation');
+      alert('success', "You have turn off reservation");
     } else {
       alert('success', 'You have turned on reservations');
     }

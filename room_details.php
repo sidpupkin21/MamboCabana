@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
 
     <?php require('shared/links.php'); ?>
-    <link rel="stylesheet" href="css/stylesheet.css" />
+    <!-- <link rel="stylesheet" href="css/stylesheet.css" /> -->
 
     <?php
     if (!isset($_GET['id'])) {

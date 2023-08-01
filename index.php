@@ -72,7 +72,7 @@
 </head>
 
 <body class="bg-light">
-    <?php include('shared/header.php'); ?>
+    <?php require('shared/header.php'); ?>
 
     <!-- Home Page Gallery Swiper-->
     <div class="container-fluid bg-white">
@@ -269,8 +269,8 @@
             }
             ?>
             <div class="col-lg-12 text-center mt-5">
-        <a href="rooms.php" class="btn btn-sm btn-outline-dark rounded-0 fw-bold shadow-none">More Rooms >>></a>
-      </div>
+                <a href="rooms.php" class="btn btn-sm btn-outline-dark rounded-0 fw-bold shadow-none">More Rooms >>></a>
+            </div>
         </div>
 
     </div>
@@ -375,16 +375,53 @@
             </div>
         </div>
     </div>
+    <?php require('shared/footer.php'); ?>
+    <script>
+        var swiper = new Swiper(".swiper-container", {
+            spaceBetween: 30,
+            effect: "fade",
+            loop: true,
+            autoplay: {
+                delay: 3500,
+                disableOnInteraction: false,
+            }
+        });
 
-
-
-
-
-
-    <script src="js/script.js"></script>
+        var swiper = new Swiper(".swiper-testimonials", {
+            effect: "coverflow",
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: "auto",
+            slidesPerView: "3",
+            loop: true,
+            coverflowEffect: {
+                rotate: 50,
+                stretch: 0,
+                depth: 100,
+                modifier: 1,
+                slideShadows: false,
+            },
+            pagination: {
+                el: ".swiper-pagination",
+            },
+            breakpoints: {
+                320: {
+                    slidesPerView: 1,
+                },
+                640: {
+                    slidesPerView: 1,
+                },
+                768: {
+                    slidesPerView: 2,
+                },
+                1024: {
+                    slidesPerView: 3,
+                },
+            }
+        });
+    </script>
 
 
 </body>
-<?php include('shared/footer.php'); ?>
 
 </html>

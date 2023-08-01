@@ -8,14 +8,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
 
     <?php require('shared/links.php'); ?>
-    <link rel="stylesheet" href="css/stylesheet.css" />
+    <!-- <link rel="stylesheet" href="css/stylesheet.css" /> -->
 
     <title><?php echo $settings_r['site_logo'] ?> - CONTACT US</title>
 
     <style>
         .pop:hover {
             border-top-color: var(--teal) !important;
-            transform: scale(1.00);
+            transform: scale(1.07);
             transition: all 0.3s;
         }
     </style>
@@ -23,7 +23,7 @@
 
 
 <body class="bg-light">
-    <?php include('shared/header.php'); ?>
+    <?php require('shared/header.php'); ?>
     <?php
     if (isset($_POST['send'])) {
         $frm_data = filternation($_POST);
@@ -77,10 +77,9 @@
     </div>
 
 
-    <?php include('shared/footer.php');
+    <?php require('shared/footer.php');
 
     ?>
-    <script src="js/script.js"></script>
 
 </body>
 

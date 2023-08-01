@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
 
     <?php require('shared/links.php'); ?>
-    <link rel="stylesheet" href="css/stylesheet.css" />
+    <!-- <link rel="stylesheet" href="css/stylesheet.css" /> -->
 
     <title><?php echo $settings_r['site_logo'] ?> - FACILITIES </title>
 
@@ -22,7 +22,7 @@
 </head>
 
 <body class="bg-light">
-    <?php include('shared/header.php'); ?>
+    <?php require('shared/header.php'); ?>
 
     <div class="container">
         <div class="row">
@@ -50,7 +50,7 @@
 
 
 
-    <?php include('shared/footer.php'); ?>
+    <?php require('shared/footer.php'); ?>
 
 </body>
 
