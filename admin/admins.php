@@ -37,7 +37,6 @@ adminLogin();
                                         <th scope="col">#ID</th>
                                         <th scope="col">Username</th>
                                         <th scope="col">Password</th>
-                                        <th scope="col">Status</th>
                                         <th scope="col">Action</th>
                                     </tr>
                                 </thead>
@@ -51,22 +50,66 @@ adminLogin();
     </div>
 
     <div class="modal fade" id="add-admin" data-bs-backdrop="static" data-bs-keyboard="true" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="add_admin_form" autocomplete="off">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Add Admin</h5>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <label class="form-label fw-bold">Username</label>
-                            <input type="text" name="username" class="form-control shadow-none"required>
+        <div class="modal-dialog modal-lg">
+            <form id="add_admin_form" autocomplete="off">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Add Admin</h5>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label fw-bold">Username</label>
+                                <input type="text" name="adminuser" class="form-control shadow-none" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label fw-bold">Password</label>
+                                <input type="text" name="adminpass" class="form-control shadow-none" required>
+                            </div>
                         </div>
                     </div>
+                    <div class="modal-footer">
+                        <button type="reset" class="btn btn-secondary text-light shadow-none" data-bs-dismiss="modal">CANCEL</button>
+                        <button type="submit" class="btn custom-bg text-light shadow-none">SUBMIT</button>
+                    </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
+
+    <div class="modal fade" id="edit-admin" data-bs-backdrop="static" data-bs-keyboard="true" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <form id="edit_admin_form" autocomplete="off">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">EDIT ADMIN</h5>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label fw-bold">Username</label>
+                                <input type="text" name="adminuser" id="adminuser" class="form-control shadow-none" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label fw-bold">Password</label>
+                                <input type="text" name="adminpass" id="adminpass" class="form-control shadow-none" required>
+                            </div>
+                        </div>
+                        <input type="hidden" name="sr_no">
+                    </div>
+                        <div class="modal-footer">
+                            <button type="reset" class="btn text-white btn-danger shadow-none" data-bs-dismiss="modal">CANCEL</button>
+                            <button type="submit" class="btn custom-bg text-white shadow-none">SUBMIT</button>
+                        </div>
+                    </div>
+            </form>
+        </div>
+    </div>
+
+    <?php require("db/scripts.php") ?>
+    <script src="../admin/js/admins.js"></script>
+  
+
 </body>
 
 </html>

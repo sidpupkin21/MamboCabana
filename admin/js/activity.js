@@ -21,8 +21,7 @@ function add_activity(){
         modal.hide();
 
         if(this.responseText == 1){
-            // console.log(this.responseText);
-            alert('success','New Activity has been added');
+            showAlert('success','New activity has been added');
             activity_s_form.elements['activity_name'].value ='';
             activity_s_form.elements['activity_icon'].value ='';
             activity_s_form.elements['activity_desc'].value ='';
@@ -38,7 +37,6 @@ function get_activity(){
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
     xhr.onload = function(){
-        // console.log(this.responseText);
         document.getElementById('activities-data').innerHTML = this.responseText;
     }
     xhr.send('get_activity');
@@ -51,11 +49,11 @@ function rem_activity(val){
 
     xhr.onload = function(){
         if(this.responseText == 1){
-            alert('success','This activity has been removed');
+            showAlert('success','This activity has been removed');
             get_activity();
         }
         else{
-            alert('error','no changes have been made');
+            showAlert('error','Activity removal has failed');
         }
     }
     xhr.send('rem_activity='+val);

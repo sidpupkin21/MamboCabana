@@ -33,8 +33,9 @@
         $res = insert($q, $values, 'ssss');
         if ($res == 1) {
             alert('success', 'Message has been sent to Management Team. You will be contacted shortly');
+
         } else {
-            alert('error', 'Something went wrong! Please try again.');
+             alert('error', 'Something went wrong! Please try again.');
         }
     }
     ?>
@@ -80,7 +81,6 @@
     <?php require('shared/footer.php');
 
     ?>
-
 </body>
 
 </html>

@@ -38,18 +38,16 @@ function add_room() {
     // xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
     xhr.onload = function () {
-        //console.log(this.responseText);
         var myModal = document.getElementById('add-room');
         var modal = bootstrap.Modal.getInstance(myModal);
         modal.hide();
 
         if (this.responseText == 1) {
-            //console.log(this.responseText);
-            alert('success', 'New room added!');
+            showAlert('success', 'New room added');
             add_room_form.reset();
             get_all_rooms();
         } else {
-            alert('error', 'error');
+            showAlert('error', 'No changes have been made');
         }
     }
     xhr.send(data);
@@ -62,7 +60,6 @@ function get_all_rooms() {
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
     xhr.onload = function () {
-        //console.log(this.responseText);
         document.getElementById('room-data').innerHTML = this.responseText;
     }
     xhr.send('get_all_rooms');
@@ -140,17 +137,16 @@ function submit_edit_room() {
     xhr.open("POST", "logic/rooms.php", true);
 
     xhr.onload = function () {
-        //console.log(this.responseText);
         var myModal = document.getElementById('edit-room');
         var modal = bootstrap.Modal.getInstance(myModal);
         modal.hide();
 
         if (this.responseText == 1) {
-            alert('success', 'Room data has been updated');
+            showAlert('success', 'Room data has been updated');
             edit_room_form.reset();
             get_all_rooms();
         } else {
-            alert('error', 'Server Down!');
+            showAlert('error', 'No changes have been made');
         }
     }
     xhr.send(data);
@@ -163,10 +159,10 @@ function toggle_status(id, val) {
 
     xhr.onload = function () {
         if (this.responseText == 1) {
-            alert('success', 'Status has been changed');
+            showAlert('success', 'Status is active');
             get_all_rooms();
         } else {
-            alert('success', 'no changes have been made');
+            showAlert('success', 'Status is inactive');
         }
     }
     xhr.send('toggle_status=' + id + '&value=' + val);
@@ -190,16 +186,16 @@ function add_image() {
 
     xhr.onload = function () {
         if (this.responseText == 'inv_img') {
-            alert('error', 'Only JPG, WEBP or PNG images are allowed!', 'image-alert');
+            showAlert('error', 'Only JPG, WEBP or PNG images are allowed!');
         }
         else if (this.responseText == 'inv_size') {
-            alert('error', 'Image should be less than 2MB!', 'image-alert');
+            showAlert('error', 'Image should be less than 2MB!');
         }
         else if (this.responseText == 'upd_failed') {
-            alert('error', 'Image upload failed. Server Down!', 'image-alert');
+            showAlert('error', 'Image upload failed. Server Down!');
         }
         else {
-            alert('success', 'New image added!', 'image-alert');
+            showAlert('success', 'New image added!');
             room_images(add_image_form.elements['room_id'].value, document.querySelector("#room-images .modal-title").innerText)
             add_image_form.reset();
         }
@@ -231,11 +227,11 @@ function rem_image(img_id, room_id) {
 
     xhr.onload = function () {
         if (this.responseText == 1) {
-            alert('success', 'Image Removed!', 'image-alert');
+            showAlert('success', 'Image has been removed');
             room_images(room_id, document.querySelector("#room-images .modal-title").innerText);
         }
         else {
-            alert('error', 'Image removal failed!', 'image-alert');
+            showAlert('error', 'Image removal failed');
         }
     }
     xhr.send(data);
@@ -251,13 +247,12 @@ function thumb_image(img_id, room_id) {
     xhr.open("POST", "logic/rooms.php", true);
 
     xhr.onload = function(){
-        //console.log(this.responseText);
         if(this.responseText == 1){
-            alert('success','Image Thumbnail changed', 'image-alert');
+            showAlert('success','Image thumbnail has been changed');
             room_images(room_id, document.querySelector("#room-images .modal-title").innerText);
         }
         else{
-            alert('error','Thumbnail update failed!','image-alert');
+            showAlert('error','Thumbnail update failed');
         }
     }
     xhr.send(data);
@@ -273,11 +268,11 @@ function remove_room(room_id) {
 
         xhr.onload = function () {
             if (this.responseText == 1) {
-                alert('success', 'Room Removed!');
+                showAlert('success', 'Room has been removed');
                 get_all_rooms();
             }
             else {
-                alert('error', 'Room removal failed!');
+                showAlert('error', 'Room removal failed');
             }
         }
         xhr.send(data);

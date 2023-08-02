@@ -3,6 +3,8 @@ require("../admin/db/funcs.php");
 //require("../admin/db/db_config.php");
 adminLogin();
 //session_regenerate_id(true);
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,7 +30,7 @@ adminLogin();
             <div class="d-flex align-items-center justify-content-between mb-3">
               <h3 class="card-title m-0">General Settings</h3>
               <button type="button" class="btn btn-dark shadow-none btn-sm" data-bs-toggle="modal" data-bs-target="#general-s">
-              EDIT <i class="bi bi-pencil-square"></i>
+                EDIT <i class="bi bi-pencil-square"></i>
               </button>
             </div>
             <h5 class="card-subtitle mb-1 fw-bold">Site Logo</h5>
@@ -90,7 +92,7 @@ adminLogin();
             <div class="d-flex align-items-center justify-content-between mb-3">
               <h3 class="card-title m-0">Contact Settings</h3>
               <button type="button" class="btn btn-dark shadow-none btn-sm" data-bs-toggle="modal" data-bs-target="#contacts-s">
-              EDIT <i class="bi bi-pencil-square"></i>
+                EDIT <i class="bi bi-pencil-square"></i>
               </button>
             </div>
             <div class="row">
@@ -228,13 +230,10 @@ adminLogin();
   </div>
 
 
-  </div>
-  </div>
 
-  <?php
-  require("../admin/db/scripts.php") ?>
 
   <script src="../admin/js/settings.js"></script>
+  <?php require("db/scripts.php") ?>
 
 
 </body>

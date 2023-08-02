@@ -6,8 +6,6 @@ function get_users(){
 
     xhr.onload = function(){
         document.getElementById('users-data').innerHTML = this.responseText;
-
-
     }
     xhr.send('get_users');
 }

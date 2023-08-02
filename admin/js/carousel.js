@@ -23,16 +23,16 @@ function add_image()
     modal.hide();
 
     if(this.responseText == 'inv_img'){
-      alert('error','Only JPG and PNG images are allowed!');
+      showAlert('error','Only JPG and PNG images are allowed');
     }
     else if(this.responseText == 'inv_size'){
-      alert('error','Image should be less than 2MB!');
+      showAlert('error','Image should be less than 2MB');
     }
     else if(this.responseText == 'upd_failed'){
-      alert('error','Image upload failed. Server Down!');
+      showAlert('error','Image upload has failed');
     }
     else{
-      alert('success','New image added!');
+      showAlert('success','New image has been added');
       carousel_picture_inp.value='';
       get_carousel();
     }
@@ -62,11 +62,11 @@ function rem_image(val)
 
   xhr.onload = function(){
     if(this.responseText==1){
-      alert('success','Image removed!');
+      showAlert('success','Image has been removed');
       get_carousel();
     }
     else{
-      alert('error','Server down!');
+      showAlert('error','Image removal has failed');
     }
   }
 

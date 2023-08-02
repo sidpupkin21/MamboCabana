@@ -1,6 +1,7 @@
 <?php
 require("../db/funcs.php");
 require("../db/db_config.php");
+
 adminLogin();
 
 if (isset($_POST['add_room'])) {
@@ -319,3 +320,4 @@ if (isset($_POST['remove_room'])) {
         echo 0;
     }
 }
+?>

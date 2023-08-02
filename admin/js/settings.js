@@ -16,7 +16,6 @@ function get_general(){
 
   xhr.onload = function(){
     general_data = JSON.parse(this.responseText);
-    //console.log(this.responseText);
 
     site_logo.innerText = general_data.site_logo;
     site_logo_inp.value = general_data.site_logo;
@@ -47,16 +46,15 @@ function upd_general(site_logo_val, site_about_val) {
 
 
   xhr.onload = function() {
-    //console.log(this.responseText);
     var mymodal = document.getElementById('general-s');
     var modal = bootstrap.Modal.getInstance(mymodal);
     modal.hide();
     if (this.responseText == 1) {
-      alert('success', 'General Settings have been updated');
+      showAlert('success', 'General Settings have been updated');
       get_general();
 
     } else {
-      alert('error', 'No changes have been made');
+      showAlert('error', 'No changes have been made');
     }
   }
 
@@ -69,11 +67,11 @@ function upd_shutdown(val) {
   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
   xhr.onload = function() {
-    //console.log(this.responseText);
     if (this.responseText == 1 && general_data.shutdown == 0) {
-      alert('success', "You have turn off reservation");
+      showAlert('success', 'You have turn off reservation');
+      
     } else {
-      alert('success', 'You have turned on reservations');
+      showAlert('success', 'You have turned on reservations');
     }
     get_general();
   }
@@ -98,7 +96,6 @@ function get_contacts(){
   xhr.open("POST", "logic/settings_crud.php",true);
   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
   xhr.onload = function(){
-    //console.log(this.responseText);
     contacts_data = JSON.parse(this.responseText);
     contacts_data = Object.values(contacts_data);
 
@@ -139,18 +136,17 @@ xhr.open("POST","logic/settings_crud.php",true);
 xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
 xhr.onload = function(){
-  //console.log(this.responseText);
   var myModal = document.getElementById('contacts-s');
   var modal = bootstrap.Modal.getInstance(myModal);
   modal.hide();
   if(this.responseText == 1)
   {
-    alert('success','Changes saved!');
+    showAlert('success','Contact settings have been updated');
     get_contacts();
   }
   else
   {
-    alert('error','No changes made!');
+    showAlert('error','No changes have been made');
   }
 }
 

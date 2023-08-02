@@ -5,7 +5,7 @@ navbar bg-body-tertiary fixed-top-->
    <div class="container-fluid bg-white">
      <a class="navbar-brand"><img src="images/logo/main.jpeg" width="250" height="100" /></a>
      <div class="d-flex">
-       <button class="btn btn-outline-success shadow me-4 btn-md">Reserve</button>
+       <!-- <button class="btn btn-outline-success shadow me-4 btn-md">Reserve</button> -->
        <!-- <button class="btn btn-outline-dark shadow-none me-0 btn-md" data-bs-toggle="modal" data-bs-target="#loginModal">
          Login
        </button>

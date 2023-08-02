@@ -15,7 +15,7 @@
                     <li class="nav-item">
                         <a class="nav-link text-light" aria-current="page" href="dashboard.php">Dashboard</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item text-light">
                         <button class="btn text-white px-3 w-100 shadow-none text-start d-flex align-items-center justify-content-between" type="button" data-bs-toggle="collapse" data-bs-target="#bookingLinks">
                             <span>Booking</span>
                             <span><i class="bi bi-caret-down-fill"></i></span>
@@ -57,6 +57,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-light" aria-current="page" href="settings.php">Settings</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" aria-current="page" href="admins.php">Admin Accounts</a>
                     </li>
                 </ul>
             </div>

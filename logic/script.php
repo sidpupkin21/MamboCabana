@@ -63,10 +63,33 @@
 //       slidesPerView: 3,
 //     },
 //   }
-// });
-
+// });-->
+<script src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
 
 <script>
+  function showAlert(type,msg,position='body')
+  {
+  let bs_class = (type == 'success') ? 'alert-success' : 'alert-danger';
+  let element = document.createElement('div');
+  element.innerHTML = `
+    <div class="alert ${bs_class} alert-dismissible fade show" role="alert">
+      <strong class="me-3">${msg}</strong>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  `;
+
+  if(position=='body'){
+    document.body.append(element);
+    element.classList.add('custom-alert');
+  }
+  else{
+    document.getElementById(position).appendChild(element);
+  }
+  setTimeout(remAlert, 3000);
+}
+
+
 function alert(type,msg,position='body')
 {
   let bs_class = (type == 'success') ? 'alert-success' : 'alert-danger';
@@ -89,7 +112,11 @@ function alert(type,msg,position='body')
 }
 
 function remAlert(){
-  document.getElementsByClassName('alert')[0].remove();
+  var alertElement =document.getElementsByClassName('alert')[0];
+  if(alertElement){
+    alertElement.remove();
+  }
+  //document.getElementsByClassName('alert')[0].remove();
 }
 
 function setActive()
@@ -154,4 +181,4 @@ register_form.addEventListener('submit', (e)=>{
 setActive();
 
 
-</script> -->
+</script>

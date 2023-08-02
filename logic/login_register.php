@@ -2,7 +2,7 @@
 require("../admin/db/db_config.php");
 require("../admin/db/funcs.php");
 date_default_timezone_set("Asia/Dubai");
-/*
+
 if(isset($_POST['register'])){
     $data = filternation($_POST);
 
@@ -102,5 +102,7 @@ if(isset($_POST['login']))
       }
     //}
   }
-}*/
+}
+
+
 ?>

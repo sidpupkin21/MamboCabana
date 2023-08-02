@@ -246,6 +246,7 @@
                                 <div class="facilities mb-4">
                                     <h6 class="mb-1">Facilities</h6>
                                     $facilities_data
+                                    
                                 </div>
                                 <div class="guests mb-4">
                                     <h6 class="mb-1">Guests</h6>

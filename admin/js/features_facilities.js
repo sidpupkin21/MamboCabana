@@ -16,19 +16,17 @@ function add_feature() {
     xhr.open("POST", "logic/features_facilities.php", true);
 
     xhr.onload = function () {
-        //console.log(this.responseText);
         var myModal = document.getElementById('feature-s');
         var modal = bootstrap.Modal.getInstance(myModal);
         modal.hide();
 
         if (this.responseText == 1) {
-            //console.log(this.responseText);
-            alert('success', 'New Feature has been added');
+            showAlert('success', 'New Feature has been added');
             feature_s_form.elements['feature_name'].value = '';
             feature_s_form.elements['feature_icon'].value;
             get_features();
         } else {
-            alert('error', 'No changes have been made!!');
+            showAlert('error', 'No changes have been made');
         }
     }
     xhr.send(data);
@@ -40,7 +38,6 @@ function get_features() {
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
     xhr.onload = function () {
-        //console.log(this.responseText);
         document.getElementById('features-data').innerHTML = this.responseText;
     }
     xhr.send('get_features');
@@ -52,16 +49,15 @@ function rem_feature(val) {
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
     xhr.onload = function () {
-        //console.log(this.responseText);
         if (this.responseText == 1) {
-            alert('success', 'This Feature has been removed!');
+            showAlert('success', 'This feature has been removed');
             get_features();
         }
-        // } else if (this.responseText == 'room_added') {
-        //     alert('error', 'Feature is added in room!');
+        // else if (this.responseText == 'room_added') {
+        //     showAlert('error', 'Feature is added in room!');
         // }
         else {
-            alert('error', 'No changes have been made');
+            showAlert('error', 'Feature removal has failed');
         }
     }
 
@@ -89,15 +85,14 @@ function add_facility()
         modal.hide();
 
         if(this.responseText == 1){
-            //console.log(this.responseText);
-            alert('success', 'New Facility has been added');
+            showAlert('success', 'New facility has been added');
             facility_s_form.elements['facility_name'].value = '';
             facility_s_form.elements['facility_icon'].value = '';
             facility_s_form.elements['facility_desc'].value = '';
             get_facilities();
         }
         else {
-            alert('error', 'No changes have been made!!');
+            showAlert('error', 'No changes have been made');
             facility_s_form.reset();
         }
     }
@@ -111,7 +106,6 @@ function get_facilities(){
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
     xhr.onload = function(){
-        //console.log(this.responseText);
         document.getElementById('facilities-data').innerHTML = this.responseText;
     }
     xhr.send('get_facilities');
@@ -125,11 +119,11 @@ function rem_facility(val){
 
     xhr.onload = function(){
         if(this.responseText ==1){
-            alert('success', 'This facility had been removed!');
+            showAlert('success', 'This facility had been removed');
             get_facilities();
         }
         else{
-            alert('error', 'no changes have been made');
+            showAlert('error', 'Facility removal has failed');
         }
     }
     xhr.send('rem_facility='+val);
