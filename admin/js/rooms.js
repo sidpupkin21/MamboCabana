@@ -257,27 +257,55 @@ function thumb_image(img_id, room_id) {
     }
     xhr.send(data);
 }
+// function remove_room(room_id) {
+//     if (confirm("Are you sure, you want to delete this room?")) {
+//         let data = new FormData();
+//         data.append('room_id', room_id);
+//         data.append('remove_room', '');
+
+//         let xhr = new XMLHttpRequest();
+//         xhr.open("POST", "logic/rooms.php", true);
+
+//         xhr.onload = function () {
+//             if (this.responseText == 1) {
+//                 showAlert('success', 'Room has been removed');
+//                 get_all_rooms();
+//             }
+//             else {
+//                 showAlert('error', 'Room removal failed');
+//             }
+//         }
+//         xhr.send(data);
+//     }
+// }
 function remove_room(room_id) {
-    if (confirm("Are you sure, you want to delete this room?")) {
+    showConfirm("Are you sure you want to delete this room?", 
+      () => {
+        // Perform room removal logic
         let data = new FormData();
         data.append('room_id', room_id);
         data.append('remove_room', '');
-
+  
         let xhr = new XMLHttpRequest();
         xhr.open("POST", "logic/rooms.php", true);
-
+  
         xhr.onload = function () {
-            if (this.responseText == 1) {
-                showAlert('success', 'Room has been removed');
-                get_all_rooms();
-            }
-            else {
-                showAlert('error', 'Room removal failed');
-            }
-        }
+          if (this.responseText == 1) {
+            showAlert('success', 'Room has been removed');
+            get_all_rooms();
+          } else {
+            showAlert('error', 'Room removal failed');
+          }
+        };
+  
         xhr.send(data);
-    }
-}
+      },
+      () => {
+        // Do nothing when canceled
+      }
+    );
+  }
+  
 
 window.onload = function () {
     get_all_rooms();

@@ -24,11 +24,11 @@ adminLogin();
                 <div class="card border-0 shadow-sm mb-4">
                     <div class="card-body">
                         <div class="text-end mb-4">
-                            <input type="text" oninput="get_bookings(this.value)" class="form-control shadow-none w-25 ms-auto" placeholder="Search">
+                            <input type="text" oninput="search_user(this.value)" class="form-control shadow-none w-25 ms-auto" placeholder="Search">
                         </div>
 
                         <div class="table-responsive">
-                            <table class="table table-hover border text-center" style="min-width:1200px;">
+                            <table class="table table-hover border text-center"><!--style="min-width:1200px;"-->
                                 <thead>
                                     <tr class="bg-dark text-light">
                                         <th scope="col">#ID</th>
@@ -36,7 +36,10 @@ adminLogin();
                                         <th scope="col">Email Address</th>
                                         <th scope="col">Username</th>
                                         <th scope="col">Phone</th>
-                                        <th scope="col">Date of birth</th>
+                                        <th scope="col">DOB</th>
+                                        <th scope="col">Nationality</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Verfied</th>
                                         <th scope="col">Action</th>
                                     </tr>
                                 </thead>

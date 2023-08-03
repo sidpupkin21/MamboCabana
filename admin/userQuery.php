@@ -15,7 +15,7 @@ if(isset($_GET['seen']))
         alert('success','All User queries have been marked as read');
       }
       else{
-        alert('error','There are no new messages');
+        alert('error','All User queries have already been marked as read');
       }
     }
     else{
@@ -28,6 +28,7 @@ if(isset($_GET['seen']))
         alert('error','No changes have been made');
       }
     }
+    
   }
 
   if(isset($_GET['del']))
@@ -47,13 +48,49 @@ if(isset($_GET['seen']))
       $q = "DELETE FROM `user_query` WHERE `sr_no`=?";
       $values = [$frm_data['del']];
       if(delete($q,$values,'i')){
-        alert('success','This user query has been marked deleted');
+        alert('success','This user query has been deleted');
       }
       else{
         alert('error','No changes have been made');
       }
     }
   }
+//   if (isset($_GET['del'])) {
+//     $frm_data = filternation($_GET);
+
+//     if ($frm_data['del'] == 'all') {
+//         showConfirm(
+//             "Are you sure you want to delete all user queries?",
+//             function () {
+//                 $q = "DELETE FROM `user_query`";
+//                 if (mysqli_query($conn, $q)) {
+//                     alert('success', 'All user queries have been deleted');
+//                 } else {
+//                     alert('error', 'There are no available messages');
+//                 }
+//             },
+//             function () {
+//                 // Do nothing when canceled
+//             }
+//         );
+//     } else {
+//         showConfirm(
+//             "Are you sure you want to delete this user query?",
+//             function () use ($frm_data) {
+//                 $q = "DELETE FROM `user_query` WHERE `sr_no`=?";
+//                 $values = [$frm_data['del']];
+//                 if (delete($q, $values, 'i')) {
+//                     alert('success', 'This user query has been marked deleted');
+//                 } else {
+//                     alert('error', 'No changes have been made');
+//                 }
+//             },
+//             function () {
+//                 // Do nothing when canceled
+//             }
+//         );
+//     }
+// }
 ?>
 <!DOCTYPE html>
 <html lang="en">
