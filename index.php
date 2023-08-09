@@ -160,7 +160,6 @@
         </div>
     </div>
 
-
     <!-- Room title cards-->
     <h2 class="mt-5 pt-4 mb-4 text-center fw-bold h-font">TOP RATED ROOMS</h2>
     <div class="h-line bg-dark"></div>
