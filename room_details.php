@@ -161,15 +161,24 @@
                                 </div>
                             area;
 
-                        if (!$settings_r['shutdown']) {
-                            $login = 0;
-                            if (isset($_SESSION['login']) && $_SESSION['login'] == true) {
-                                $login = 1;
+                        // if (!$settings_r['shutdown']) {
+                        //     $login = 0;
+                        //     if (isset($_SESSION['login']) && $_SESSION['login'] == true) {
+                        //         $login = 1;
+                        //     }
+                        //     echo <<<book
+                        //             <button onclick='checkLoginToBook($login, $room_data[id])' class="btn w-100 text-white custom-bg shadow-none mb-1">Book Now </button>
+                        //         book;
+                        // }
+                        if(!$settings_r['shutdown']){
+                            $login=0;
+                            if(isset($_SESSION['login']) && $_SESSION['login']==true){
+                              $login=1;
                             }
-                            echo <<<book
-                                    <button onclick='checkLoginToBook($login, $room_data[id])' class="btn w-100 text-white custom-bg shadow-none mb-1">Book Now </button>
-                                book;
-                        }
+                            echo<<<book
+                              <button onclick='checkLoginToBook($login,$room_data[id])' class="btn w-100 text-white custom-bg shadow-none mb-1">Book Now</button>
+                            book;
+                          }
                         ?>
                     </div>
                 </div>
@@ -228,6 +237,36 @@
 
         </div>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            const backToTopBtn = $("#backToTopBtn");
+
+            $(window).scroll(function() {
+                if ($(window).scrollTop() > 300) {
+                    backToTopBtn.addClass("show");
+                } else {
+                    backToTopBtn.removeClass("show");
+                }
+            });
+
+            const websiteUrl = "<?php echo $contact_r['ws']; ?>";
+
+            // Modify the button click behavior
+            backToTopBtn.on("click", function(e) {
+                e.preventDefault();
+
+                // Navigate to the website URL obtained from PHP
+                if (websiteUrl) {
+                    window.location.href = websiteUrl;
+                }
+            });
+        });
+    </script>
+    <a id="backToTopBtn" class="btn-blue">
+        <i class="bi bi-whatsapp me-1" width="50" height="50"></i>
+    </a>
 
 
 

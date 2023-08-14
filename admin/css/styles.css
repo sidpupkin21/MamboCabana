@@ -98,3 +98,7 @@ input[type=number] {
   }
   
 }
+
+    .btn-size{
+        width: 150px;
+    }

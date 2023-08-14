@@ -33,9 +33,8 @@
         $res = insert($q, $values, 'ssss');
         if ($res == 1) {
             alert('success', 'Message has been sent to Management Team. You will be contacted shortly');
-
         } else {
-             alert('error', 'Something went wrong! Please try again.');
+            alert('error', 'Something went wrong! Please try again.');
         }
     }
     ?>
@@ -76,6 +75,38 @@
             </div>
         </div>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            const backToTopBtn = $("#backToTopBtn");
+
+            $(window).scroll(function() {
+                if ($(window).scrollTop() > 300) {
+                    backToTopBtn.addClass("show");
+                } else {
+                    backToTopBtn.removeClass("show");
+                }
+            });
+
+            const websiteUrl = "<?php echo $contact_r['ws']; ?>";
+
+            // Modify the button click behavior
+            backToTopBtn.on("click", function(e) {
+                e.preventDefault();
+
+                // Navigate to the website URL obtained from PHP
+                if (websiteUrl) {
+                    window.location.href = websiteUrl;
+                }
+            });
+        });
+    </script>
+    <a id="backToTopBtn" class="btn-blue">
+        <i class="bi bi-whatsapp me-1" width="50" height="50"></i>
+    </a>
+
+
 
 
     <?php require('shared/footer.php');

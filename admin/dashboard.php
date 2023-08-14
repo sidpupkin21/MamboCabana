@@ -37,15 +37,14 @@ session_regenerate_id(true);
                         </a>
                     </div>
 
-                    <div class="col-md-3 mb-4">
+                    <!-- <div class="col-md-3 mb-4">
                         <a href="" class="text-decoration-none">
                             <div class="card text-center text-success p-3">
                                 <h6>Refund Bookings </h6>
                                 <h1 class="mt-2 mb-0"></h1>
-                                <!--PHP CODE-->
                             </div>
                         </a>
-                    </div>
+                    </div> -->
 
                     <div class="col-md-3 mb-4">
                         <a href="" class="text-decoration-none">
@@ -168,14 +167,12 @@ session_regenerate_id(true);
                         </div>
                     </div>
 
-                    <div class="col-md-3 mb-4">
+                    <!-- <div class="col-md-3 mb-4">
                         <div class="card text-center text-warning p-3">
                             <h6>Unverified</h6>
                             <h1 class="mt-2 mb-0"></h1>
-                            <!--?php echo $current_users[''] ?>-->
-
                         </div>
-                    </div>
+                    </div> -->
                 </div>
 
             </div>
