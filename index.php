@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
 
     <?php require('shared/links.php'); ?>
-    <link rel="stylesheet" href="css/stylesheet.css" />
+    <!-- <link rel="stylesheet" href="css/stylesheet.css" /> -->
 
     <title><?php echo $settings_r['site_logo'] ?> - HOME </title>
 
@@ -98,56 +98,39 @@
         <div class="row">
             <div class="col-lg-12 bg-light shadow p-4 rounded-top">
                 <h3>Find Availability</h3>
-                <form>
+                <form action="rooms.php">
                     <div class="row align-items-center">
                         <div class="col-lg-2">
                             <label class="form-label" style="font-weight: 500;">CHECK-IN</label>
-                            <input type="date" class="form-control shadow-none">
+                            <input type="date" class="form-control shadow-none" name="checkin" required>
                         </div>
                         <div class="col-lg-2">
                             <label class="form-label" style="font-weight: 500;">CHECK-OUT</label>
-                            <input type="date" class="form-control shadow-none">
+                            <input type="date" class="form-control shadow-none" name="checkout" required>
                         </div>
                         <div class="col-lg-2">
                             <label class="form-label" style="font-weight: 250px;">ADULTS</label>
-                            <select class="form-select">
-                                <option selected>0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                            </select>
-                            <!-- <select class="form-select shadow-none" name="adult">
-                               
-                                    //$guests_q = mysqli_query($conn, "SELECT MAX(adult) AS `max_adult`, MAX(children) AS `max_children` FROM `rooms` WHERE `status` ='1' AND `removed` = '0'");
-                                    //$guests_res = mysqli_fetch_assoc($guests_q);
+                            <select class="form-select shadow-none" name="adult">
+                                <?php
+                                $guests_q = mysqli_query($conn, "SELECT MAX(adult) AS `max_adult`, MAX(children) AS `max_children` 
+                                    FROM `rooms` WHERE `status`='1' AND `removed`='0'");
+                                $guests_res = mysqli_fetch_assoc($guests_q);
 
-                                    //for($i = 1; $i<=$guests_res['max_adult']; $i++){
-                                    //    echo "<option value='$i'>$i</option>";
-                                   // }
-                                
-                            </select> -->
+                                for ($i = 0; $i <= $guests_res['max_adult']; $i++) {
+                                    echo "<option value='$i'>$i</option>";
+                                }
+                                ?>
+                            </select>
                         </div>
                         <div class="col-lg-2">
                             <label class="form-label" style="font-weight: 250px;">CHILDREN</label>
-                            <select class="form-select">
-                                <option selected>0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
+                            <select class="form-select shadow-none" name="children">
+                                <?php
+                                for ($i = 0; $i <= $guests_res['max_children']; $i++) {
+                                    echo "<option value='$i'>$i</option>";
+                                }
+                                ?>
                             </select>
-                            <!-- <select class="form-select shadow-none" name="children">
-                                
-                                //for($i=1;$i<=$guests_res['max_children']; $i++){
-                                  //  echo "<option value='$i'>$i</option>";
-                                //}
-                                
-                            </select> -->
                         </div>
                         <input type="hidden" name="check_availability">
                         <div class="col-lg-1 mb-lg-3 mt-5">
@@ -375,6 +358,37 @@
             </div>
         </div>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            const backToTopBtn = $("#backToTopBtn");
+
+            $(window).scroll(function() {
+                if ($(window).scrollTop() > 300) {
+                    backToTopBtn.addClass("show");
+                } else {
+                    backToTopBtn.removeClass("show");
+                }
+            });
+
+            const websiteUrl = "<?php echo $contact_r['ws']; ?>";
+
+            // Modify the button click behavior
+            backToTopBtn.on("click", function(e) {
+                e.preventDefault();
+
+                // Navigate to the website URL obtained from PHP
+                if (websiteUrl) {
+                    window.location.href = websiteUrl;
+                }
+            });
+        });
+    </script>
+    <a id="backToTopBtn" class="btn-blue">
+        <i class="bi bi-whatsapp me-1" width="50" height="50"></i>
+    </a>
+
     <?php require('shared/footer.php'); ?>
     <script>
         var swiper = new Swiper(".swiper-container", {
@@ -420,8 +434,7 @@
             }
         });
     </script>
-
-
+ 
 </body>
 
 </html>
