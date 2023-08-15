@@ -94,7 +94,7 @@
                             <b>Check out: </b> $checkout
                         </p>
                         <p>
-                            <b>Amount: </b> $$data[price]
+                            <b>Amount: </b> $$data[total_pay]
                             <br>
                             <b>Order ID: </b> $data[order_id] 
                             <br>
