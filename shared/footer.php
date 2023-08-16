@@ -153,7 +153,14 @@
                 } else if (response.status == 'inv_pass') {
                     alert('error', response.message);
 
-                } else if (response.status == 'success') {
+                } 
+                else if(response.status == 'inactive_acc'){
+                    alert('error', response.message);
+                }
+                else if(response.status == 'unverf_acc'){
+                    alert('error', response.message);
+                }
+                else if (response.status == 'success') {
                     alert('success', response.message);
                     let fileurl = window.location.href.split('/').pop().split('?').shift();
                     if (fileurl == 'index.php') {

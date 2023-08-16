@@ -139,6 +139,14 @@ if (isset($_POST['login'])) {
       echo json_encode(array('status' => 'inv_pass', 'message' => 'Password is invalid.. Please enter again or reset'));
 
     } //else {
+    if($u_fetch['status']==0){
+      echo json_encode(array('status' => 'inactive_acc', 'message' => 'Your account is temporarily disabled, Please Contact the managment team.'));
+
+    }
+    else if($u_fetch['is_verified']==0){
+      echo json_encode(array('status' => 'unverf_acc', 'message' => 'Your account is unverified, Please check your email(spam/junk folder) if you are not able to locate the verification email link'));
+
+    }
     else{
       session_start();
       $_SESSION['login'] = true;

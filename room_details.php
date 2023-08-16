@@ -107,12 +107,12 @@
                         //     </div>
                         // rating;
 
-                        $fea_q = mysqli_query($conn, "SELECT f.name FROM `features` f INNER JOIN `room_features` rfea ON f.id = rfea.features_id WHERE rfea.room_id = '$room_data[id]'");
+                        $fea_q = mysqli_query($conn, "SELECT f.name, f.icon FROM `features` f INNER JOIN `room_features` rfea ON f.id = rfea.features_id WHERE rfea.room_id = '$room_data[id]'");
 
                         $features_data = "";
                         while ($fea_row = mysqli_fetch_assoc($fea_q)) {
                             $features_data .= "<span class='badge rounded-pill bg-light text-dark text-wrap me-1 mb-1'>
-                                $fea_row[name]
+                            <iconify-icon icon='$fea_row[icon]'></iconify-icon>$fea_row[name]
                                 </span>";
                         }
 
@@ -123,13 +123,13 @@
                                 </div>
                             features;
 
-                        $fac_q = mysqli_query($conn, "SELECT f.name FROM `facilities` f INNER JOIN `room_facilities` rfac on f.id = rfac.facilities_id WHERE rfac.room_id = '$room_data[id]'");
+                        $fac_q = mysqli_query($conn, "SELECT f.name, f.icon FROM `facilities` f INNER JOIN `room_facilities` rfac on f.id = rfac.facilities_id WHERE rfac.room_id = '$room_data[id]'");
 
                         $facilities_data = "";
                         while ($fac_row = mysqli_fetch_assoc($fac_q)) {
                             $facilities_data .=
                                 "<span class='badge rounded-pill bg-light text-dark text-wrap me-1 mb-1'>
-                                $fac_row[name]
+                                <iconify-icon icon='$fac_row[icon]'></iconify-icon> $fac_row[name]
                                 </span>";
                         }
 
