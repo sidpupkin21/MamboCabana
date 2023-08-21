@@ -55,11 +55,11 @@ function cancel_booking(id) {
             xhr.open("POST", "logic/new_bookings.php", true);
 
             xhr.onload = function () {
-                if(this.responseText == 1){
+                if (this.responseText == 1) {
                     showAlert('success', 'Booking has been cancelled');
                     get_bookings();
                 }
-                else{
+                else {
                     showAlert('error', 'This Booking has also ready been cancelled');
                 }
             }
@@ -71,8 +71,7 @@ function cancel_booking(id) {
     );
 }
 
-
-function approve_booking(id){
+function approve_booking(id) {
     let data = new FormData();
     data.append('booking_id', id);
     data.append('approve_booking', '');
@@ -80,38 +79,38 @@ function approve_booking(id){
     let xhr = new XMLHttpRequest();
     xhr.open("POST", "logic/new_bookings.php", true);
 
-    xhr.onload = function(){
-        if(this.responseText == 1){
+    xhr.onload = function () {
+        if (this.responseText == 1) {
             showAlert('success', 'Booking has been approved. Client will be contacted via email');
             get_bookings();
         }
-        else{
+        else {
             showAlert('error', 'This Booking has also ready been approved');
         }
     }
     xhr.send(data);
 }
 
-function complete_booking(id){
+function complete_booking(id) {
     showConfirm("Are you sure you want to complete this booking? This Action CANNOT BE REVERSED",
         () => {
             let data = new FormData();
             data.append('booking_id', id);
             data.append('complete_booking', '');
-        
+
             let xhr = new XMLHttpRequest();
             xhr.open("POST", "logic/new_bookings.php", true);
-            xhr.onload = function(){
-                if(this.responseText == 1){
+            xhr.onload = function () {
+                if (this.responseText == 1) {
                     showAlert('success', 'Booking has been completed. This Action CANNOT BE REVERSED');
                     get_bookings();
                 }
-                else{
+                else {
                     showAlert('error', "This Booking's status has already been changed.");
                 }
             }
             xhr.send(data);
-          
+
         },
         () => {
             // Do nothing when canceled
@@ -119,6 +118,8 @@ function complete_booking(id){
     );
 
 }
-window.onload = function(){
+
+
+window.onload = function () {
     get_bookings();
 }

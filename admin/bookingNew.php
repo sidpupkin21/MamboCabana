@@ -1,4 +1,4 @@
-<?php 
+<?php
 require("db/funcs.php");
 require("db/db_config.php");
 adminLogin();
@@ -11,7 +11,7 @@ adminLogin();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin - New Bookings</title>
-   <?php require('../admin/db/links.php');?>
+    <?php require('../admin/db/links.php'); ?>
 </head>
 
 <body class="bg-light">
@@ -50,6 +50,8 @@ adminLogin();
             </div>
         </div>
     </div>
+   
+
 
     <!--Room Number Assignment Modal-->
     <div class="modal fade" id="assign-room" data-bs-backdrop="static" data-bs-keyboard="true" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -77,23 +79,7 @@ adminLogin();
         </div>
     </div>
 
-    <!--Approve Room Modal-->
-    <!-- <div class="modal fade" id="approve-booking" data-bs-backdrop="static" data-bs-keyboard="true" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <form id="approve_booking_form">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">
-                            
-                        </h5>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div> -->
-
-    <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script> -->
+    
     <?php require("db/scripts.php") ?>
     <script src="js/new_bookings.js"></script>
 </body>

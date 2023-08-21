@@ -140,13 +140,13 @@ if (isset($_GET['gen_pdf']) && isset($_GET['id'])) {
     $checkinDate = DateTime::createFromFormat('d-m-Y', $checkin);
 
     // Set check-in time to 12:00 PM
-    $checkinDate->setTime(12, 0, 0);
+    $checkinDate->setTime(16, 0, 0);
 
     // Convert checkout date to DateTime object
     $checkoutDate = DateTime::createFromFormat('d-m-Y', $checkout);
 
     // Set checkout time to 3:00 PM
-    $checkoutDate->setTime(15, 0, 0);
+    $checkoutDate->setTime(19, 0, 0);
 
     // Format dates for Google Calendar
     $formatted_checkin = $checkinDate->format('M j Y \a\t g:i A');
@@ -155,28 +155,6 @@ if (isset($_GET['gen_pdf']) && isset($_GET['id'])) {
     // Generate the Google Calendar event URL
     $event_title = "Mambo Cabana Reservation - $data[room_name]";
     $google_calendar_url = "https://www.google.com/calendar/render?action=TEMPLATE&text=$event_title&dates={$checkinDate->format('Ymd\THis\Z')}/{$checkoutDate->format('Ymd\THis\Z')}";
-
-    // $ios_calendar_info = "Event: $event_title\nStart: $formatted_checkin\nEnd: $formatted_checkout";
-    // $android_calendar_link = "content://com.android.calendar/time/{$checkinDate->getTimestamp()}/event";
-    // Create iCalendar (.ics) content
-    // $ics_content = "BEGIN:VCALENDAR
-    // VERSION:2.0
-    // BEGIN:VEVENT
-    // SUMMARY:$event_title
-    // DTSTART:{$checkinDate->format('Ymd\THis\Z')}
-    // DTEND:{$checkoutDate->format('Ymd\THis\Z')}
-    // END:VEVENT
-    // END:VCALENDAR";
-
-    // // Generate a unique filename for the .ics file
-    // $ics_filename = "{$data['order_id']}.ics";
-
-    // // Save the .ics content to a file
-    // file_put_contents($ics_filename, $ics_content);
-
-    // // Generate links for adding event to Android and providing .ics file for iOS
-    // $android_calendar_link = "content://com.android.calendar/events";
-    // $ios_calendar_ics_link = "data:text/calendar;charset=utf-8," . rawurlencode($ics_content);
 
     // Generate QR code image data directly
     $qr_temp_file = tempnam(sys_get_temp_dir(), 'qr_code');
@@ -199,13 +177,10 @@ if (isset($_GET['gen_pdf']) && isset($_GET['id'])) {
             </tr>
             <tr>
                 <td style='text-align: center;'><img src='$qr_code_data' alt='QR Code' style='width: 250px; height: 250px;'/></td>
+                
             </tr>";
-            // $table_data .= "<tr><td><a href='$ios_calendar_link'>Add to iOS Calendar</a></td></tr>";
-            // $table_data .= "<tr><td><a href='$android_calendar_link'>Add to Android Calendar</a></td></tr>";
-            // $table_data .= "<tr><td><p>To add to iOS Calendar, copy the following information and create a new event:<br>$ios_calendar_info</p></td></tr>";
-            // $table_data .= "<tr><td><a href='$android_calendar_link'>Add to Android Calendar</a></td></tr>";
-            // $table_data .= "<tr><td><a href='$ios_calendar_ics_link' download='$ics_filename'>Add to iOS Calendar</a></td></tr>";
             $table_data .= "
+            <tr><td style='text-align: center;'><a href='$google_calendar_url'>Add Event To Calendar</a></td></tr>
             <tr>
                 <td>^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</td>
             </tr>
@@ -267,3 +242,25 @@ if (isset($_GET['gen_pdf']) && isset($_GET['id'])) {
     // $table_data .= "<tr><td><img src='$qr_code_data' alt='QR Code' style='width: 150px; height: 150px;' /></td></tr>";
 
 // Create DateTime objects for checkin and checkout
+
+// $ios_calendar_info = "Event: $event_title\nStart: $formatted_checkin\nEnd: $formatted_checkout";
+    // $android_calendar_link = "content://com.android.calendar/time/{$checkinDate->getTimestamp()}/event";
+    // Create iCalendar (.ics) content
+    // $ics_content = "BEGIN:VCALENDAR
+    // VERSION:2.0
+    // BEGIN:VEVENT
+    // SUMMARY:$event_title
+    // DTSTART:{$checkinDate->format('Ymd\THis\Z')}
+    // DTEND:{$checkoutDate->format('Ymd\THis\Z')}
+    // END:VEVENT
+    // END:VCALENDAR";
+
+    // // Generate a unique filename for the .ics file
+    // $ics_filename = "{$data['order_id']}.ics";
+
+    // // Save the .ics content to a file
+    // file_put_contents($ics_filename, $ics_content);
+
+    // // Generate links for adding event to Android and providing .ics file for iOS
+    // $android_calendar_link = "content://com.android.calendar/events";
+    // $ios_calendar_ics_link = "data:text/calendar;charset=utf-8," . rawurlencode($ics_content);

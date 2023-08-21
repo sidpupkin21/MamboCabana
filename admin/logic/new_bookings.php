@@ -1,4 +1,3 @@
-
 <?php
 require("../db/funcs.php");
 require("../db/db_config.php");
@@ -56,6 +55,7 @@ if (isset($_POST['get_bookings'])) {
                 <b>Price: </b> $$data[price]
                 <br>
                 <b>Dates: </b> $checkin To $checkout
+                <br>
             </td>
             <td>
                 <b>Amount: </b> $$data[total_pay]
@@ -65,8 +65,7 @@ if (isset($_POST['get_bookings'])) {
                 <b>Room Number: </b> $data[room_no]
             </td>
             <td>
-            <span class='badge $status_bg'>$data[booking_status]</span>
-
+                <span class='badge $status_bg'>$data[booking_status]</span>
             </td>
             <td>
                 <button type='button' onclick='approve_booking($data[booking_id])' class='btn btn-size btn-sm btn-primary text-white fw-bold shadow-none'>
@@ -93,14 +92,26 @@ if (isset($_POST['get_bookings'])) {
     }
     echo $table_data;
 }
-// <button type='button' class='mt-2 btn btn-size btn-info btn-sm fw-bold shadow-none'>
-// <i class='bi bi-check2-all'></i> Complete
-// </button>
-// <br>
-// <br>
-// <button type='button' class='btn btn-size btn-sm btn-primary text-white fw-bold shadow-none'>
-// <i class='bi bi-check2-circle'></i> Accept Booking
-// </button>
+
+
+if(isset($_POST['modify_booking'])){
+    $frm_data = filternation($_POST);
+    $booking_id = $_POST['booking_id']; // Get the booking_id from the POST data
+
+    $flag = 0;
+
+    $q = "UPDATE `booking_order` SET `check_in`=?,`check_out`=? WHERE `booking_id`=?";
+    $values = [$frm_data['check_in'], $frm_data['check_out'], $frm_data['booking_id']];
+    if(update($q, $values, 'ssi')){
+        $flag = 1;
+    }
+    if($flag ){
+        echo 1;
+    }
+    else{
+        echo 0;
+    }
+}
 
 if (isset($_POST['assign_room'])) {
     $frm_data = filternation($_POST);
@@ -133,11 +144,13 @@ if (isset($_POST['approve_booking'])) {
     echo $res;
 }
 
-if(isset($_POST['complete_booking'])){
+if (isset($_POST['complete_booking'])) {
     $frm_data = filternation($_POST);
     $query = "UPDATE `booking_order` SET `booking_status`=? WHERE `booking_id`=?";
     $values = ['completed', $frm_data['booking_id']];
     $res = update($query, $values, 'si');
     echo $res;
 }
+
+
 ?>

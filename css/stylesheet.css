@@ -336,3 +336,10 @@ input::-webkit-inner-spin-button {
       opacity: 1;
       visibility: visible;
   }
+    .terms-container {
+     height: 10em;
+     /* Adjust the height as needed */
+     overflow: auto;
+     border: 1px solid #ccc;
+     padding: 5px;
+   }

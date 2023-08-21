@@ -57,6 +57,25 @@ function select($sql, $values, $datatypes)
     }
 }
 
+function select2($sql, $values = [], $datatypes = null)
+{
+    $conn = $GLOBALS['conn'];
+    if ($stmt = mysqli_prepare($conn, $sql)) {
+        if (!empty($datatypes)) {
+            mysqli_stmt_bind_param($stmt, $datatypes, ...$values);
+        }
+        if (mysqli_stmt_execute($stmt)) {
+            $res = mysqli_stmt_get_result($stmt);
+            mysqli_stmt_close($stmt);
+            return $res;
+        } else {
+            mysqli_stmt_close($stmt);
+            die("Query Error execute - SELECT");
+        }
+    } else {
+        die("Query Error prepare - SELECT");
+    }
+}
 //update functions
 function update($sql, $values, $datatypes)
 {
