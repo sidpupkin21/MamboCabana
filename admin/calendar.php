@@ -64,6 +64,7 @@ adminLogin();
             </div>
         </div>
     </div>
+    
     <?php require("db/scripts.php"); ?>
     <script src="js/calendar.js"></script>
 </body>
