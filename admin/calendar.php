@@ -35,12 +35,16 @@ adminLogin();
         }
 
         .booked {
-            background-color: #ffa07a;
+            background-color: #228B22;/*#ffa07a;*/
             cursor: pointer;
         }
 
         .pending {
-            background-color: #87ceeb;
+            background-color:#ffd700;/* #87ceeb; */
+            cursor: pointer;
+        }
+        .completed{
+            background-color:#fffacd;
             cursor: pointer;
         }
     </style>
