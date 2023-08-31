@@ -82,9 +82,9 @@ if (isset($_POST['get_bookings'])) {
         <span class='badge $status_bg'>$data[booking_status]</span>
         </td>
         <td>
-            <button type='button'>
-            <i class='bi bi-file-earmark-arrow-down-fill' class='btn btn-outline-success btn-sm fw-bold shadow-none'></i>
-            </button>
+        <button type='button' onclick='download($data[booking_id])' class='btn btn-outline-success btn-sm fw-bold shadow-none'>
+          <i class='bi bi-file-earmark-arrow-down-fill'></i>
+        </button>
         </td>
     </tr>";
     $i++;

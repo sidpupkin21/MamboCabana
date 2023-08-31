@@ -95,6 +95,25 @@ function update($sql, $values, $datatypes)
     }
 }
 
+function update2($sql, $values, $datatypes)
+{
+    $conn = $GLOBALS['conn'];
+    if ($stmt = mysqli_prepare($conn, $sql)) {
+        mysqli_stmt_bind_param($stmt, $datatypes, ...$values);
+        if (mysqli_stmt_execute($stmt)) {
+            $res = mysqli_stmt_affected_rows($stmt);
+            mysqli_stmt_close($stmt);
+            return $res;
+        } else {
+            // Provide a more detailed error message
+            die("Update Query Execution Failed: " . mysqli_error($conn));
+        }
+    } else {
+        // Provide a more detailed error message
+        die("Update Query Preparation Failed: " . mysqli_error($conn));
+    }
+}
+
 //Insert Function
 function insert($sql, $values, $datatypes)
 {
