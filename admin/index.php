@@ -39,10 +39,10 @@ if ((isset($_SESSION['adminLogin']) && $_SESSION['adminLogin'] == true)) {
             <h4 class="bg-dark text-white py-3">ADMIN LOGIN</h4>
             <div class="p-4">
                 <div class="mb-3">
-                    <input name="admin_user" required type="text" class="form-control shadow-none text-center" placeholder="UserName">
+                    <input name="adminuser" required type="text" class="form-control shadow-none text-center" placeholder="UserName">
                 </div>
                 <div class="mb-4">
-                    <input name="admin_pass" required type="password" class="form-control shadow-none text-center" placeholder="Password">
+                    <input name="adminpass" required type="password" class="form-control shadow-none text-center" placeholder="Password">
                 </div>
                 <button name="login" type="submit" class="btn btn-success text-white custom-bg shadow-none">LOGIN</button>
             </div>
@@ -53,9 +53,9 @@ if ((isset($_SESSION['adminLogin']) && $_SESSION['adminLogin'] == true)) {
     if (isset($_POST['login'])) {
         $frm_data = filternation($_POST);
 
-        $query = "SELECT * FROM `admins` WHERE `admin_user`=? AND `admin_pass`=?";
+        $query = "SELECT * FROM `admins` WHERE `adminuser`=? AND `adminpass`=?";
 
-        $values = [$frm_data['admin_user'], $frm_data['admin_pass']];
+        $values = [$frm_data['adminuser'], $frm_data['adminpass']];
 
         $res = select($query, $values, "ss");
         if ($res->num_rows == 1) {

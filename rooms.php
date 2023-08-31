@@ -22,7 +22,7 @@
     $adult_default = "";
     $children_default = "";
 
-    if (isset($_GET['check_availablity'])) {
+    if (isset($_GET['check_availability'])) {
         $frm_data = filternation($_GET);
 
         $checkin_default = $frm_data['checkin'];
@@ -51,9 +51,9 @@
                                     <span>CHECK AVAILABILITY</span>
                                 </h5>
                                 <label class="form-label">Check-in</label>
-                                <input type="date" class="form-control shadow-none mb-3" value="<?php echo $checkin_default ?>" id="checkin" onchange="chk_avail_filter()">
+                                <input type="date" class="form-control shadow-none mb-3" value="" id="checkin" onchange="chk_avail_filter()">
                                 <label class="form-label">Check-out</label>
-                                <input type="date" class="form-control shadow-none" value="<?php echo $checkout_default ?>" id="checkout" onchange="chk_avail_filter()">
+                                <input type="date" class="form-control shadow-none" value="" id="checkout" onchange="chk_avail_filter()">
                             </div>
                             <div class="border bg-light p-3 rounded mb-3">
                                 <h5 class="d-flex align-items-center justify-content-between mb-3" style="font-size: 18px;">
@@ -61,16 +61,16 @@
                                     <button id="facilities_btn" onclick="facilities_clear()" class="btn shadow-none btn-sm text-secondary d-none">Reset</button>
                                 </h5>
                                 <?php
-                                $facilities_q = selectAll('facilities');
-                                while ($row = mysqli_fetch_assoc($facilities_q)) {
-                                    echo <<<facilities
-                                            <div class="mb-2">
-                                                <input type="checkbox" onclick="fetch_rooms()" name="facilities" value="$row[id]" class="form-check-input shadow-none me-1" id="$row[id]">
-                                                <label class="form-check-label" for="$row[id]">$row[name]</label>
-                                            </div>
+                                // $facilities_q = selectAll('facilities');
+                                // while ($row = mysqli_fetch_assoc($facilities_q)) {
+                                //     echo <<<facilities
+                                //             <div class="mb-2">
+                                //                 <input type="checkbox" onclick="fetch_rooms()" name="facilities" value="$row[id]" class="form-check-input shadow-none me-1" id="$row[id]">
+                                //                 <label class="form-check-label" for="$row[id]">$row[name]</label>
+                                //             </div>
 
-                                        facilities;
-                                }
+                                //         facilities;
+                                // }
                                 ?>
                             </div>
                             <div class="border bg-light p-3 rounded mb-3">
@@ -81,11 +81,11 @@
                                 <div class="d-flex">
                                     <div class="me-3">
                                         <label class="form-label">Adults</label>
-                                        <input type="number" min="1" id="adults" value="<?php echo $adult_default ?>" oninput="guests_filter()" class="form-control shadow-none">
+                                        <input type="number" min="1" id="adults" value="" oninput="guests_filter()" class="form-control shadow-none">
                                     </div>
                                     <div>
                                         <label class="form-label">Children</label>
-                                        <input type="number" min="0" id="children" value="<?php echo $children_default ?>" oninput="guests_filter()" class="form-control shadow-none">
+                                        <input type="number" min="0" id="children" value="" oninput="guests_filter()" class="form-control shadow-none">
                                     </div>
                                 </div>
                             </div>
@@ -114,9 +114,12 @@
                                     <button id="chk_avail_btn" onclick="chk_avail_clear()" class="btn shadow-none btn-sm text-secondary d-none">Reset</button>
                                 </h5>
                                 <label class="form-label">Check-in</label>
+                                <!-- <input type="date" class="form-control shadow-none mb-3"  id="checkin" onchange="chk_avail_filter()"> -->
                                 <input type="date" class="form-control shadow-none mb-3" value="<?php echo $checkin_default ?>" id="checkin" onchange="chk_avail_filter()">
                                 <label class="form-label">Check-out</label>
-                                <input type="date" class="form-control shadow-none" value="<?php echo $checkout_default ?>" id="checkout" onchange="chk_avail_filter()">
+                                <!-- <input type="date" class="form-control shadow-none"  id="checkout" onchange="chk_avail_filter()"> -->
+                                <input type="date" class="form-control shadow-none" value="<?php echo $checkout_default ?>"  id="checkout" onchange="chk_avail_filter()">
+
                             </div>
 
                             <!-- Facilities -->
@@ -147,7 +150,7 @@
                                 <div class="d-flex">
                                     <div class="me-3">
                                         <label class="form-label">Adults</label>
-                                        <input type="number" min="1" id="adults" value="<?php echo $adult_default ?>" oninput="guests_filter()" class="form-control shadow-none">
+                                        <input type="number" min="1" id="adults"value="<?php echo $adult_default ?>" oninput="guests_filter()" class="form-control shadow-none">
                                     </div>
                                     <div>
                                         <label class="form-label">Children</label>
@@ -165,6 +168,37 @@
 
         </div>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            const backToTopBtn = $("#backToTopBtn");
+
+            $(window).scroll(function() {
+                if ($(window).scrollTop() > 300) {
+                    backToTopBtn.addClass("show");
+                } else {
+                    backToTopBtn.removeClass("show");
+                }
+            });
+
+            const websiteUrl = "<?php echo $contact_r['ws']; ?>";
+
+            // Modify the button click behavior
+            backToTopBtn.on("click", function(e) {
+                e.preventDefault();
+
+                // Navigate to the website URL obtained from PHP
+                if (websiteUrl) {
+                    window.location.href = websiteUrl;
+                }
+            });
+        });
+    </script>
+    <a id="backToTopBtn" class="btn-blue">
+        <i class="bi bi-whatsapp me-1" width="50" height="50"></i>
+    </a>
+
     <?php require("shared/footer.php"); ?>
 
     <script>

@@ -59,9 +59,9 @@ adminLogin();
         </div>
     </div>
    
- <?php
-  require("../admin/db/scripts.php") ?>
-  <script>
+    <?php require("db/scripts.php") ?>
+
+  <!-- <script>
     let carousel_s_form = document.getElementById('carousel_s_form');
     let carousel_picture_inp = document.getElementById('carousel_picture_inp');
 
@@ -133,8 +133,8 @@ adminLogin();
     window.onload = function() {
       get_carousel();
     }
-  </script>
-
+  </script> -->
+<script src="js/carousel.js"></script>
 </body>
 
 </html>

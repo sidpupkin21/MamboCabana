@@ -12,22 +12,23 @@ if(isset($_GET['seen']))
       $q = "UPDATE `user_query` SET `seen`=?";
       $values = [1];
       if(update($q,$values,'i')){
-        alert('success','Marked all as read!');
+        alert('success','All User queries have been marked as read');
       }
       else{
-        alert('error','Seen Operation Failed');
+        alert('error','All User queries have already been marked as read');
       }
     }
     else{
       $q = "UPDATE `user_query` SET `seen`=? WHERE `sr_no`=?";
       $values = [1,$frm_data['seen']];
       if(update($q,$values,'ii')){
-        alert('success','Marked as read!');
+        alert('success','This user query has been marked as read');
       }
       else{
-        alert('error','Delete operation failed');
+        alert('error','No changes have been made');
       }
     }
+    
   }
 
   if(isset($_GET['del']))
@@ -37,70 +38,57 @@ if(isset($_GET['seen']))
     if($frm_data['del']=='all'){
       $q = "DELETE FROM `user_query`";
       if(mysqli_query($conn,$q)){
-        alert('success','All data deleted!');
+        alert('success','All user queries have been deleted');
       }
       else{
-        alert('error','Operation failed!');
+        alert('error','There are no available messages');
       }
     }
     else{
       $q = "DELETE FROM `user_query` WHERE `sr_no`=?";
       $values = [$frm_data['del']];
       if(delete($q,$values,'i')){
-        alert('success','Data deleted!');
+        alert('success','This user query has been deleted');
       }
       else{
-        alert('error','Operation failed!');
+        alert('error','No changes have been made');
       }
     }
   }
-// if(isset($_GET['seen'])){
+//   if (isset($_GET['del'])) {
 //     $frm_data = filternation($_GET);
 
-//     if($frm_data['seen']=='all'){
-//         $q = "UPDATE `user_query` SET `seen``=?";
-//         $values = [1];
-//         if(update($q, $values,'i')){
-//             alert('success','Marked all messages as read!');
-//         }
-//         else{
-//             alert('error','Operation Failed!');
-//         }
-//     }
-//     else{
-//         $q = "UPDATE `user_query` SET `seen`=? WHERE `sr_no`=?";
-//         $values = [1,$frm_data['seen']];
-//         if(update($q, $values,'ii')){
-//             alert('success',"Marked as read");
-//         }
-//         else{
-//             alert('error','Operation Failed!');
-//         }
-//     }
-// }
-
-// if(isset($_GET['del'])){
-//     $frm_data = filternation($_GET);
-
-//     if($frm_data['del']=='all'){
-//         $q = "DELETE FROM `user_query`";
-//         if(mysqli_query($conn, $q)){
-//             alert('success','All messages deleted!');
-//         }
-//         else{
-//             alert('error','Operation failed!');
-//         }
-
-//     }
-//     else{
-//         $q = "DELETE FROM `user_query` WHERE `sr_no`=?";
-//         $values = [$frm_data['del']];
-//         if(delete($q, $values,'i')){
-//             alert('success','Message have been deleted');
-//         }
-//         else{
-//             alert('error', 'Operation failed');
-//         }
+//     if ($frm_data['del'] == 'all') {
+//         showConfirm(
+//             "Are you sure you want to delete all user queries?",
+//             function () {
+//                 $q = "DELETE FROM `user_query`";
+//                 if (mysqli_query($conn, $q)) {
+//                     alert('success', 'All user queries have been deleted');
+//                 } else {
+//                     alert('error', 'There are no available messages');
+//                 }
+//             },
+//             function () {
+//                 // Do nothing when canceled
+//             }
+//         );
+//     } else {
+//         showConfirm(
+//             "Are you sure you want to delete this user query?",
+//             function () use ($frm_data) {
+//                 $q = "DELETE FROM `user_query` WHERE `sr_no`=?";
+//                 $values = [$frm_data['del']];
+//                 if (delete($q, $values, 'i')) {
+//                     alert('success', 'This user query has been marked deleted');
+//                 } else {
+//                     alert('error', 'No changes have been made');
+//                 }
+//             },
+//             function () {
+//                 // Do nothing when canceled
+//             }
+//         );
 //     }
 // }
 ?>
@@ -133,9 +121,9 @@ if(isset($_GET['seen']))
                             </a>
                         </div>
 
-                        <div class="table-responsive md" style="height:1000px; overflow-y:scroll;">
-                            <table class="table table-hover border">
-                                <thead class="sticky-top">
+                        <div class="table-responsive-lg" style="height:750px; overflow-y:scroll;">
+                            <table class="table table-hover border text-center">
+                                <thead>
                                     <tr class="bg-dark text-light">
                                         <th scope="col">#ID</th>
                                         <th scope="col">Name</th>
@@ -148,31 +136,7 @@ if(isset($_GET['seen']))
                                 </thead>
                                 <tbody>
                                     <?php
-                                    // $q = "SELECT * FROM `user_query` ORDER BY `sr_no` DESC";
-                                    // $data = mysqli_query($conn, $q);
-                                    // $i =1;
 
-                                    // while($row = mysqli_fetch_assoc($data)){
-                                    //     //$date = date('d-m-Y',strtotime($row['datentime']));
-                                    //     $seen='';
-                                    //     if($row['seen']!=1){
-                                    //         $seen = "<a href='?seen=$row[sr_no]' class='btn btn-sm rounded-pill btn-primary'>Mark as read</a> <br>";
-                                    //     }
-                                    //     $seen .= "<a href='?del=$row[sr_no]' class='btn btn-sm rounded-pill btn-danger mt-2'>Delete</a>";
-
-                                    //     echo <<<query
-                                    //         <tr>
-                                    //             <td>$i</td>
-                                    //             <td>$row[name]</td>
-                                    //             <td>$row[email]</td>
-                                    //             <td>$row[subject]</td>
-                                    //             <td>$row[message]</td>
-                                    //             <td>$row[date]</td>
-                                    //             <td>$seen</td>
-                                    //         </tr>
-                                    //     query;
-                                    //     $i++;
-                                    // }
                                     $q = "SELECT * FROM `user_query` ORDER BY `sr_no` DESC";
                                     $data = mysqli_query($conn,$q);
                                     $i=1;
@@ -193,7 +157,7 @@ if(isset($_GET['seen']))
                                           <td>$row[email]</td>
                                           <td>$row[subject]</td>
                                           <td>$row[message]</td>
-                                          <td>$row[date]</td>
+                                          <td>$row[datentime]</td>
                                           <td>$seen</td>
                                         </tr>
                                       query;

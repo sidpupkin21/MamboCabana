@@ -88,31 +88,33 @@
                                 <h4>$$room_data[price] per night </h4>
                             price;
 
-                        // $rating_q = "SELECT AVG(rating) AS `avg_rating` FROM `rating_review` WHERE `room_id`='$room_data[id]' ORDER BY `sr_no` DESC LIMIT 20";
+                        $rating_q = "SELECT AVG(rating) AS `avg_rating` FROM `rating_review` WHERE `room_id`='$room_data[id]' ORDER BY `sr_no` DESC LIMIT 20";
 
-                        // $rating_res = mysqli_query($conn,$rating_q);
-                        // $rating_fetch = mysqli_fetch_assoc($rating_res);
+                        $rating_res = mysqli_query($conn, $rating_q);
+                        $rating_fetch = mysqli_fetch_assoc($rating_res);
 
-                        // $rating_data = "";
+                        $rating_data = "";
 
-                        // if($rating_fetch['avg_rating']!=NULL){
-                        //     for($i=0; $i<$rating_fetch['avg_rating']; $i++){
-                        //         $rating_data .="<i class='bi bi-star-fill text-warning'></i>";
-                        //     }
-                        // }
+                        if($rating_fetch['avg_rating']!=NULL){
+                            for($i=0; $i < $rating_fetch['avg_rating']; $i++){
+                                $rating_data.="<i class='bi bi-star-fill text-warning'></i>";
+                            }
+                        }
+                        echo <<<rating
+                        <div class="mb-3">
+                            $rating_data
+                        </div>
+                        
+                        rating;
 
-                        // echo <<<rating
-                        //     <div class="mb-3">
-                        //         $rating_data
-                        //     </div>
-                        // rating;
+                        
 
-                        $fea_q = mysqli_query($conn, "SELECT f.name FROM `features` f INNER JOIN `room_features` rfea ON f.id = rfea.features_id WHERE rfea.room_id = '$room_data[id]'");
+                        $fea_q = mysqli_query($conn, "SELECT f.name, f.icon FROM `features` f INNER JOIN `room_features` rfea ON f.id = rfea.features_id WHERE rfea.room_id = '$room_data[id]'");
 
                         $features_data = "";
                         while ($fea_row = mysqli_fetch_assoc($fea_q)) {
                             $features_data .= "<span class='badge rounded-pill bg-light text-dark text-wrap me-1 mb-1'>
-                                $fea_row[name]
+                            <iconify-icon icon='$fea_row[icon]'></iconify-icon>$fea_row[name]
                                 </span>";
                         }
 
@@ -123,13 +125,13 @@
                                 </div>
                             features;
 
-                        $fac_q = mysqli_query($conn, "SELECT f.name FROM `facilities` f INNER JOIN `room_facilities` rfac on f.id = rfac.facilities_id WHERE rfac.room_id = '$room_data[id]'");
+                        $fac_q = mysqli_query($conn, "SELECT f.name, f.icon FROM `facilities` f INNER JOIN `room_facilities` rfac on f.id = rfac.facilities_id WHERE rfac.room_id = '$room_data[id]'");
 
                         $facilities_data = "";
                         while ($fac_row = mysqli_fetch_assoc($fac_q)) {
                             $facilities_data .=
                                 "<span class='badge rounded-pill bg-light text-dark text-wrap me-1 mb-1'>
-                                $fac_row[name]
+                                <iconify-icon icon='$fac_row[icon]'></iconify-icon> $fac_row[name]
                                 </span>";
                         }
 
@@ -160,16 +162,15 @@
                                     </span>
                                 </div>
                             area;
-
-                        if (!$settings_r['shutdown']) {
-                            $login = 0;
-                            if (isset($_SESSION['login']) && $_SESSION['login'] == true) {
-                                $login = 1;
+                        if(!$settings_r['shutdown']){
+                            $login=0;
+                            if(isset($_SESSION['login']) && $_SESSION['login']==true){
+                              $login=1;
                             }
-                            echo <<<book
-                                    <button onclick='checkLoginToBook($login, $room_data[id])' class="btn w-100 text-white custom-bg shadow-none mb-1">Book Now </button>
-                                book;
-                        }
+                            echo<<<book
+                              <button onclick='checkLoginToBook($login,$room_data[id])' class="btn w-100 text-white custom-bg shadow-none mb-1">Book Now</button>
+                            book;
+                          }
                         ?>
                     </div>
                 </div>
@@ -185,49 +186,77 @@
 
                 <div>
                     <h5 class="mb-3">Reviews & Ratings</h5>
+                    <?php 
+                    $review_q = 
+                        "SELECT rr.*, uc.name AS uname, r.name AS rname FROM `rating_review` rr 
+                            INNER JOIN `user` uc ON rr.user_id = uc.id
+                            INNER JOIN `rooms` r on rr.room_id = r.id
+                            WHERE rr.room_id = '$room_data[id]'
+                            ORDER BY `sr_no` DESC LIMIT 15";
+                    $review_res = mysqli_query($conn, $review_q);
+                    if(mysqli_num_rows($review_res)==0){
+                        echo 'No Reviews Yet!';
+                    }
+                    else{
+                        while($row = mysqli_fetch_assoc($review_res)){
+                            $stars = "<i class='bi bi-star-fill text-warning'></i>";
+                            for($i=1; $i<$row['rating']; $i++){
+                                $stars .= "<i class='bi bi-star-fill text-warning'></i>";
+                            }
 
-                    <?php
-                    // $review_q = "SELECT rr.*, uc.name AS uname, uc.profile, r.name AS rname FROM `rating_review` rr
-                    //     INNER JOIN `user_cred` uc ON rr.user_id = uc.id
-                    //     INNER JOIN `rooms` r ON rr.room_id = r.id
-                    //     WHERE rr.room_id = '$room_data[id]'
-                    //     ORDER BY `sr_no` DESC LIMIT 15
-                    // ";
+                            echo <<<reviews
+                            <div class="mb-4">
+                                <div class="d-flex align-items-center mb-2">
+                                    <h6 class="m-0 ms-2">$row[uname]</h6>
+                                </div>
+                                <p class="mb-1">
+                                    $row[review]
+                                </p>
+                                <div>
+                                    $stars
+                                </div>
+                            </div>
 
-                    // $review_res = mysqli_query($conn, $review_q);
-
-                    // if(mysqli_num_rows($review_res)==0){
-                    //     echo 'No reviews yet!';
-                    // }
-                    // else{
-                    //     while($row = mysqli_fetch_assoc($review_res)){
-                    //         $stars = "<i class='bi bi-star-fill text-warning'></i>";
-                    //         for($i=1; $i<$row['rating']; $i++){
-                    //             $stars .="<i class='bi bi-star-fill text-warning'></i>";
-                    //         }
-
-                    //         echo <<<reviews
-                    //             <div class="mb-4">
-                    //                 <div class="d-flex align-items-center mb-2">
-                    //                     <h6 class="m-0 ms-2">$row[uname]</h6>
-                    //                 </div>
-                    //                 <p class="mb-1">
-                    //                     $row[review]
-                    //                 </p>
-                    //                 <div>
-                    //                     $stars
-                    //                 </div>
-                    //             </div>
-                    //         reviews;
-                    //     }
-                    // }
+                            reviews;
+                        }
+                    }
                     ?>
+
                 </div>
             </div>
 
-
         </div>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            const backToTopBtn = $("#backToTopBtn");
+
+            $(window).scroll(function() {
+                if ($(window).scrollTop() > 300) {
+                    backToTopBtn.addClass("show");
+                } else {
+                    backToTopBtn.removeClass("show");
+                }
+            });
+
+            const websiteUrl = "<?php echo $contact_r['ws']; ?>";
+
+            // Modify the button click behavior
+            backToTopBtn.on("click", function(e) {
+                e.preventDefault();
+
+                // Navigate to the website URL obtained from PHP
+                if (websiteUrl) {
+                    window.location.href = websiteUrl;
+                }
+            });
+        });
+    </script>
+    <a id="backToTopBtn" class="btn-blue">
+        <i class="bi bi-whatsapp me-1" width="50" height="50"></i>
+    </a>
 
 
 

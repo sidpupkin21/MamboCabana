@@ -48,6 +48,52 @@ function alert($type, $msg)
       </div>
     alert;
 }
+function confirmAction($isConfirmed, $onConfirm, $onCancel) {
+  if ($isConfirmed) {
+    $onConfirm();
+  } else {
+    $onCancel();
+  }
+  echo <<<JS
+    <script>
+      const confirmElement = document.querySelector('.custom-confirm');
+      confirmElement.remove();
+    </script>
+JS;
+}
+
+function showConfirm($msg, $onConfirm, $onCancel, $position = 'body') {
+  echo <<<HTML
+  <div class="alert-container" style="margin-top:10%">
+    <div class="alert alert-info alert-dismissible fade show custom-confirm" role="alert">
+      <strong class="me-3">$msg</strong>
+      <button type="button" class="btn btn-success me-1" id="confirmBtn">Confirm</button>
+      <button type="button" class="btn btn-danger" id="cancelBtn">Cancel</button>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  </div>
+  <script>
+    const confirmBtn = document.querySelector('#confirmBtn');
+    const cancelBtn = document.querySelector('#cancelBtn');
+
+    confirmBtn.addEventListener('click', () => {
+      confirmAction(true, function() {
+        {$onConfirm}
+      }, function() {
+        {$onCancel}
+      });
+    });
+
+    cancelBtn.addEventListener('click', () => {
+      confirmAction(false, function() {
+        {$onConfirm}
+      }, function() {
+        {$onCancel}
+      });
+    });
+  </script>
+HTML;
+}
 
 function uploadImage($image,$folder)
 {

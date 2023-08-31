@@ -17,6 +17,10 @@ adminLogin();
             font-family: 'Bootstrap Icons';
             content: "\f1f8";
         }
+        .info-but {
+            float: right;
+
+        }
     </style>
 </head>
 
@@ -28,6 +32,13 @@ adminLogin();
         <div class="row">
             <div class="col-lg-10 ms-auto p-4 overflow-hidden">
                 <h3 class="mb-4">Activities Near By</h3>
+                <div class="row">
+                    <div class="col-12">
+                        <button type="button" class="btn btn-light shadow-none btn-sm info-but" data-bs-toggle="modal" data-bs-target="#information-m">
+                            <i class="bi bi-question-square-fill"></i>
+                        </button>
+                    </div>
+                </div>
                 <div class="card border-0 shadow-sm mb-4">
                     <div class="card-body">
                         <div class="d-flex align-items-center justify-content-between mb-3">
@@ -85,6 +96,26 @@ adminLogin();
                     </div>
                 </div>
             </form>
+        </div>
+    </div>
+    
+    <!--Information Modal-->
+    <div class="modal fade" id="information-m" data-bs-backdrop="static" data-bs-keyboard="true" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">How to get Icon</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <p>In order to add a button icon, first visit the following link: https://icons.getbootstrap.com/</p>
+                        <p>Search for desired icon, then copy for example bi bi-0-square from <strong>i class="bi bi-0-square"</strong>without quotations from the class and paste inside the add icon for feature or facility</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="reset" class="btn btn-danger text-white shadow-none" data-bs-dismiss="modal">CANCEL</button>
+                </div>
+            </div>
         </div>
     </div>
 

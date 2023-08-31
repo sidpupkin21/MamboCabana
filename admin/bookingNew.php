@@ -1,4 +1,4 @@
-<?php 
+<?php
 require("db/funcs.php");
 require("db/db_config.php");
 adminLogin();
@@ -11,7 +11,7 @@ adminLogin();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin - New Bookings</title>
-   <?php require('../admin/db/links.php');?>
+    <?php require('../admin/db/links.php'); ?>
 </head>
 
 <body class="bg-light">
@@ -24,18 +24,20 @@ adminLogin();
 
                 <div class="card border-0 shadow-sm mb-4">
                     <div class="card-body">
+
                         <div class="text-end mb-4">
                             <input type="text" oninput="get_bookings(this.value)" class="form-control shadow-none w-25 ms-auto" placeholder="Search">
                         </div>
 
                         <div class="table-responsive">
-                            <table class="table table-hover border" style="min-width: 1200px;">
+                            <table class="table table-hover border">
                                 <thead>
                                     <tr class="bg-dark text-light">
                                         <th scope="col">#</th>
                                         <th scope="col">User Details</th>
                                         <th scope="col">Room Details</th>
                                         <th scope="col">Bookings Details</th>
+                                        <th scope="col">Status</th>
                                         <th scope="col">Action</th>
                                     </tr>
                                 </thead>
@@ -48,6 +50,8 @@ adminLogin();
             </div>
         </div>
     </div>
+   
+
 
     <!--Room Number Assignment Modal-->
     <div class="modal fade" id="assign-room" data-bs-backdrop="static" data-bs-keyboard="true" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -62,11 +66,8 @@ adminLogin();
                     <div class="modal-body">
                         <div class="mb-3">
                             <label class="form-label fw-bord">Room Number</label>
-                            <input type="text" name="room_no" class="form-control shadow-none" require>
+                            <input type="text" name="room_no" class="form-control shadow-none" required>
                         </div>
-                        <span class="badge rounded-pill bg-light text-dark mb-3 text-wrap 1h-base">
-                            NOTE:
-                        </span>
                         <input type="hidden" name="booking_id">
                     </div>
                     <div class="modal-footer">
@@ -78,9 +79,9 @@ adminLogin();
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
-
+    
+    <?php require("db/scripts.php") ?>
+    <script src="js/new_bookings.js"></script>
 </body>
 
 </html>
